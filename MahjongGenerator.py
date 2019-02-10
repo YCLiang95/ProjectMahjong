@@ -1,17 +1,20 @@
 import sys
 import Mahjong
 import random
-
-tileMountain = []
-tileRiver = []
+import csv
 
 
 def main():
-    global tileMountain
-    tileMountain = Mahjong.init()
-    random.shuffle(tileMountain)
-    for i in tileMountain:
-        print(i.tileType)
+    count = 50
+    with open('mahjong.csv', 'w') as file:
+        writer = csv.writer(file)
+        for j in range(count):
+            tile_mountain = Mahjong.init()
+            random.shuffle(tile_mountain)
+            tiles = []
+            for i in tile_mountain:
+                tiles.append(i.tileType)
+            writer.writerow([tiles])
     sys.exit()
 
 

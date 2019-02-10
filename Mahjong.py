@@ -1,3 +1,21 @@
+def tile_table():
+    result = [" "]
+    for i in range(1, 10):
+        result.append(str(i) + "M")
+    for i in range(1, 10):
+        result.append(str(i) + "P")
+    for i in range(1, 10):
+        result.append(str(i) + "S")
+    result.append("Df")
+    result.append("Nf")
+    result.append("Xf")
+    result.append("Bf")
+    result.append("Hz")
+    result.append("Fc")
+    result.append("Bb")
+    return result
+
+
 class Tile:
     tileType = ""
     order = 0
