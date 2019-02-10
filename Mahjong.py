@@ -20,19 +20,19 @@ def init():
     for i in range(1, 10):
         for j in range(4):
             if i == 5 and j == 3:
-                tile_mountain.append(Tile("HS" + str(i), 18 + i))
-                tile_mountain.append(Tile("HP" + str(i), 9 + i))
-                tile_mountain.append(Tile("HM" + str(i), i))
+                tile_mountain.append(Tile("Ts", 18 + i))
+                tile_mountain.append(Tile("Tp", 9 + i))
+                tile_mountain.append(Tile("Tm", i))
             else:
-                tile_mountain.append(Tile("S" + str(i), 18 + i))
-                tile_mountain.append(Tile("P" + str(i), 9 + i))
-                tile_mountain.append(Tile("M" + str(i), i))
+                tile_mountain.append(Tile(str(i) + "S", 18 + i))
+                tile_mountain.append(Tile(str(i) + "P", 9 + i))
+                tile_mountain.append(Tile(str(i) + "M", i))
     for i in range(4):
-        tile_mountain.append(Tile("D", 28))
-        tile_mountain.append(Tile("N", 29))
-        tile_mountain.append(Tile("X", 30))
-        tile_mountain.append(Tile("B", 31))
-        tile_mountain.append(Tile("Z", 32))
-        tile_mountain.append(Tile("F", 33))
-        tile_mountain.append(Tile("BB", 34))
+        tile_mountain.append(Tile("Df", 28))
+        tile_mountain.append(Tile("Nf", 29))
+        tile_mountain.append(Tile("Xf", 30))
+        tile_mountain.append(Tile("Bf", 31))
+        tile_mountain.append(Tile("Hz", 32))
+        tile_mountain.append(Tile("Fc", 33))
+        tile_mountain.append(Tile("Bb", 34))
     return tile_mountain

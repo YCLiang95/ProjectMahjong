@@ -1,54 +1,76 @@
 import math
+import base64
 
 
 def sigmoid(x):
     return 1 / (1 + math.exp(-x))
 
 
-class Edge:
-    weight = 0.0
-    start = None
-    end = None
-    layer = 0
-
-    def __init__(self):
-        self.weight = 0.0
+def breed(father, mother):
+    pass
 
 
 class Neuron:
     value = 0
     activation = sigmoid
+    connections = []
+    layer = 0
+    active = False
 
-    def __init__(self):
+    def __init__(self, layer, next_layer):
+        self.layer = layer
+        for i in range(next_layer):
+            self.connections.append(0.0)
         self.value = 0
 
     def activate(self):
-        return self.activation(self.value)
+        self.value = self.activation(self.value)
 
 
 class NeuralNetwork:
-    id = ""
-    inputLayer = []
-    hiddenLayer1 = []
-    hiddenLayer2 = []
-    outputLayer = []
-    edgesIF = []
-    edgesFS = []
-    edgesSO = []
+    geno = ""
+    depth = 2
+    layers = []
+    NeuronCounts = []
 
-    def __init__(self, input_count, output_count):
-        for i in range(input_count):
-            self.inputLayer.append(Neuron())
-        for i in range(output_count):
-            self.outputLayer.append(Neuron())
-        self.id = "foo"
+    def __init__(self, layers=[255, 255, 255, 255]):
+        self.NeuronCounts = layers
+        self.depth = len(layers) - 2
+        for i in range(len(layers)):
+            self.layers.append([])
+            for j in range(layers[i]):
+                if i == len(layers) - 1:
+                    self.layers[i + 1].append(Neuron(i + 1, 0))
+                else:
+                    self.layers[i + 1].append(Neuron(i + 1, layers[i + 1]))
 
-    def random(self):
+    def random_generator(self):
         for i in range(10):
-            self.inputLayer.append(Neuron())
-            print("do something")
-            # do something
+            pass
+        self.encode()
 
-    def load(self):
-        # load items
-        return self
+    def encode(self):
+        geno = ""
+        geno = geno + "F" + str(len(self.layers[1])) + "S" + str(len(self.layers[2]))
+        self.geno = base64.encodebytes(bytes(geno, encoding="ascii"))
+
+    def mutate(self):
+        self.encode()
+
+    def reset(self):
+        for i in range(1, len(self.layers)):
+            for j in self.layers[i]:
+                j.value = 0
+                j.active = False
+
+    def evaluate(self):
+        self.reset()
+        for i in range(self.depth + 1):
+            for j in self.layers[i]:
+                if j.active or i == 0:
+                    for k in range(len(j.connections)):
+                        self.layers[i + 1][k].value += j.value * j.connections[k]
+                        self.layers[i + 1][k].active = True
+            for j in self.layers[i + 1]:
+                if j.active:
+                    j.activate()
