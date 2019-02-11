@@ -5,12 +5,8 @@ tilesTable = Mahjong.tile_table()
 
 
 def load_table(path):
-    result = []
     with open(path, 'r') as file:
-        line = file.readline()
-        while line:
-            result.append(line)
-            line = file.readline()
+        result = file.read().splitlines()
     print("Win table loaded:" + str(len(result)))
     return result
 
@@ -67,7 +63,7 @@ def find_flush(table, depth, string):
 
 def main():
     table = create_table()
-    result = find_3tiles(table, 2, []) + find_flush(table, 2, [])
+    result = find_3tiles(table, 3, []) + find_flush(table, 3, [])
     result2 = set()
     for i in result:
         t = sorted(i)
