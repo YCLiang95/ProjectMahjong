@@ -16,6 +16,14 @@ def tile_table():
     return result
 
 
+def tile_dictionary():
+    table = tile_table()
+    result = {}
+    for i in range(len(table)):
+        result[table[i]] = i
+    return result
+
+
 class Tile:
     tileType = ""
     order = 0

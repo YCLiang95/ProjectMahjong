@@ -4,6 +4,17 @@ import Mahjong
 tilesTable = Mahjong.tile_table()
 
 
+def load_table(path):
+    result = []
+    with open(path, 'r') as file:
+        line = file.readline()
+        while line:
+            result.append(line)
+            line = file.readline()
+    print("Win table loaded:" + str(len(result)))
+    return result
+
+
 def create_table():
     table = []
     for i in range(35):

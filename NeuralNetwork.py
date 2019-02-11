@@ -7,6 +7,10 @@ def sigmoid(x):
     return 1 / (1 + math.exp(-x))
 
 
+def create(layers):
+    return NeuralNetwork(layers)
+
+
 def point_crossover(father, mother):
     result = []
     child1 = NeuralNetwork(father.NeuronCounts)
@@ -43,14 +47,13 @@ def uniform_crossover(father, mother):
 
 
 class Neuron:
-    value = 0
     # activation = sigmoid
-    connections = []
-    layer = 0
-    active = False
 
     def __init__(self, layer, next_layer):
         self.layer = layer
+        self.active = False
+        self.value = 0
+        self.connections = []
         for i in range(next_layer):
             self.connections.append(0.0)
         self.value = 0
@@ -65,19 +68,17 @@ class Neuron:
 
 
 class NeuralNetwork:
-    geno = ""
-    depth = 2
-    layers = []
-    NeuronCounts = []
-    count = 0
-    mutationCount = 25
 
     def __init__(self, layers=[34, 255, 255, 34]):
         self.NeuronCounts = layers
         self.counts = 0
+        self.fitness = 0
+        self.mutationCount = 25
+        self.geno = ""
         for i in range(1, len(layers) - 1):
             self.counts += layers[i]
         self.depth = len(layers) - 2
+        self.layers = []
         for i in range(len(layers)):
             self.layers.append([])
             for j in range(layers[i]):
@@ -85,6 +86,9 @@ class NeuralNetwork:
                     self.layers[i].append(Neuron(i, 0))
                 else:
                     self.layers[i].append(Neuron(i, layers[i + 1]))
+
+    def __lt__(self, other):
+        return self.fitness < other.fitness
 
     def random_generator(self):
         for i in range(10):
@@ -105,7 +109,7 @@ class NeuralNetwork:
             j = random.randint(0, len(self.layers) - 2)
             k = random.randint(0, self.NeuronCounts[j] - 1)
             m = random.randint(0, self.NeuronCounts[j + 1] - 1)
-            if  random.randint(0, 100) >= 5:
+            if random.randint(0, 100) >= 5:
                 self.layers[j][k].connections[m] += random.random() * 4 - 2
             else:
                 self.layers[j][k].connections[m] = 0
