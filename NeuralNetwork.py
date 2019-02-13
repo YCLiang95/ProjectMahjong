@@ -72,7 +72,7 @@ class NeuralNetwork:
     def __init__(self, layers=[34, 255, 255, 34]):
         self.NeuronCounts = layers
         self.counts = 0
-        self.fitness = 0
+        self.fitness = 0.0
         self.mutationCount = 25
         self.geno = ""
         for i in range(1, len(layers) - 1):
