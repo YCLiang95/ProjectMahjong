@@ -11,6 +11,8 @@ def create(layers):
     return NeuralNetwork(layers)
 
 
+# crossover 2 neural network with an random point
+# return: produce 2 offsprings
 def point_crossover(father, mother):
     result = []
     child1 = NeuralNetwork(father.NeuronCounts)
@@ -25,6 +27,8 @@ def point_crossover(father, mother):
     return result
 
 
+# uniformly crossover two neural network with each weight
+# return: produce 2 offsprings
 def uniform_crossover(father, mother):
     result = []
     child1 = NeuralNetwork(father.NeuronCounts)
@@ -46,6 +50,7 @@ def uniform_crossover(father, mother):
     return result
 
 
+# Neural network class, core of neural network
 class Neuron:
     # activation = sigmoid
 
@@ -134,3 +139,11 @@ class NeuralNetwork:
             for j in self.layers[i + 1]:
                 if j.active:
                     j.activate()
+
+    # print the neural network and save it to file
+    def print(self, file):
+        pass
+
+    # load a neural network from file
+    def load(self, file):
+        pass

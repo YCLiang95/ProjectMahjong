@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9446633-5efd-4b05-8a2a-0f5b2c423c53" name="Default Changelist" comment="initial commit">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NeuralNetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeuralNetwork.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/onePlayerMahjong.py" beforeDir="false" afterPath="$PROJECT_DIR$/onePlayerMahjong.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NeuralNetwork.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="74" column="26" selection-start-line="74" selection-start-column="26" selection-end-line="74" selection-end-column="26" />
+            <state relative-caret-position="357">
+              <caret line="107" column="67" lean-forward="true" selection-start-line="107" selection-start-column="67" selection-end-line="107" selection-end-column="67" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -45,14 +43,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/onePlayerMahjong.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="716">
-              <caret line="192" lean-forward="true" selection-start-line="192" selection-end-line="192" />
+            <state relative-caret-position="434">
+              <caret line="171" column="12" selection-start-line="171" selection-start-column="12" selection-end-line="171" selection-end-column="12" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
-                <element signature="e#1172#1385#0" />
               </folding>
             </state>
           </provider>
@@ -95,8 +92,8 @@
         <option value="$PROJECT_DIR$/MahjongCalculator/mahjong/shanten.py" />
         <option value="$PROJECT_DIR$/MahjongCalculator/mahjong/utils.py" />
         <option value="$PROJECT_DIR$/MahjongCalculator/mahjong/tile.py" />
-        <option value="$PROJECT_DIR$/NeuralNetwork.py" />
         <option value="$PROJECT_DIR$/onePlayerMahjong.py" />
+        <option value="$PROJECT_DIR$/NeuralNetwork.py" />
       </list>
     </option>
   </component>
@@ -114,7 +111,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -131,6 +127,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -283,8 +280,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -349,13 +347,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MahjongWinTable.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="14" selection-start-column="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MahjongCalculator/mahjong/tile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
@@ -383,16 +374,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NeuralNetwork.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="74" column="26" selection-start-line="74" selection-start-column="26" selection-end-line="74" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MahjongGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -407,13 +388,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/MahjongWinTable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="14" selection-start-column="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/onePlayerMahjong.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="716">
-          <caret line="192" lean-forward="true" selection-start-line="192" selection-end-line="192" />
+        <state relative-caret-position="434">
+          <caret line="171" column="12" selection-start-line="171" selection-start-column="12" selection-end-line="171" selection-end-column="12" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#1172#1385#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NeuralNetwork.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="107" column="67" lean-forward="true" selection-start-line="107" selection-start-column="67" selection-end-line="107" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
