@@ -1,7 +1,7 @@
 import math
 import random
 import base64
-
+import json
 
 def sigmoid(x):
     return 1 / (1 + math.exp(-x))
@@ -9,6 +9,16 @@ def sigmoid(x):
 
 def create(layers):
     return NeuralNetwork(layers)
+
+
+def load(file):
+    nn = NeuralNetwork()
+    nn.__dict__ = json.load(file)
+    return nn
+
+
+def save(nn, file):
+    json.dump(nn.__dict__, file)
 
 
 # crossover 2 neural network with an random point
