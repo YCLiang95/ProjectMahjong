@@ -2,6 +2,7 @@ import Mahjong
 import NeuralNetwork
 import random
 import threading
+from multiprocessing import Process, Lock,  Array
 from MahjongCalculator.mahjong.shanten import Shanten
 from MahjongCalculator.mahjong.tile import TilesConverter
 
@@ -161,13 +162,17 @@ def test():
     # do 100 test run
     for Generations in range(100):
         print("Generation:" + str(Generations))
+        network_fitness = Array(0, range(networks_count))
         # _thread.start_new_thread(train, (networks, i * 8, i * 8 + 8))
         threads = []
         for i in range(threads_count):
-            threads.append(TrainingThread(networks, i * 8, i * 8 + 8))
+            # threads.append(TrainingThread(networks, i * 8, i * 8 + 8))
+            threads.append(Process(target=train, args=(networks, i * 8, i * 8 + 8, network_fitness)))
             threads[i].start()
         for i in threads:
             i.join()
+        for i in range(len(networks)):
+            networks[i].fitness = network_fitness[i]
         networks.sort(reverse=True)
         averge = 0
         for i in range(len(networks)):
@@ -176,6 +181,7 @@ def test():
         averge = round(averge / 96, 2)
         print(averge)
         # 3 of the bad networks were randomly chosen to survive
+        # better networks still have better chance to survive
         new_networks = []
         i = random.randint(0, 15)
         j = random.randint(1, 10)
