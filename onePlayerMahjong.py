@@ -2,6 +2,7 @@ import Mahjong
 import NeuralNetwork
 import random
 import threading
+import time
 from multiprocessing import Process, Lock,  Manager
 from MahjongCalculator.mahjong.shanten import Shanten
 from MahjongCalculator.mahjong.tile import TilesConverter
@@ -93,7 +94,7 @@ class TrainingThread(threading.Thread):
 def train(networks, start, end, arr_fitness, games):
     for Network in range(start, end):
         arr_fitness[Network] = 0
-        for Rounds in range(50):
+        for Rounds in range(len(games)):
             fitness = 0.0
             mountain = games[Rounds].copy()
             river = []
@@ -140,43 +141,45 @@ def train(networks, start, end, arr_fitness, games):
                     river.append(hand.pop(13))
             if fitness != 1:
                 arr_fitness[Network] += fitness
-        print("Network:" + str(Network) + "  Fitness:" + str(round(arr_fitness[Network], 2)))
-    pass
+        #print("Network:" + str(Network) + "  Fitness:" + str(round(arr_fitness[Network], 2)))
 
 
 def test():
     games = []
     networks = []
     networks_count = 96
-    threads_count = 12
+    threads_count = 4
+    cut_off = 24
+    game_count = 10
     for i in range(networks_count):
-        networks.append(NeuralNetwork.NeuralNetwork([34, 255, 255, 34]))
+        networks.append(NeuralNetwork.NeuralNetwork([34, 127, 127, 34]))
         networks[i].mutate()
-    for i in range(50):
+    for i in range(game_count):
         mountain = Mahjong.init()
         random.shuffle(mountain)
         games.append(mountain.copy())
 
     # do 100 test run
     for Generations in range(100):
+        t = time.time()
         print("Generation:" + str(Generations))
         with Manager() as manager:
             network_fitness = manager.list(range(networks_count))
             threads = []
             for i in range(threads_count):
-                threads.append(Process(target=train, args=(networks, i * 8, i * 8 + 8, network_fitness, games)))
+                threads.append(Process(target=train, args=(networks, i * cut_off, i * cut_off + cut_off, network_fitness, games)))
                 threads[i].start()
             for i in threads:
                 i.join()
             for i in range(len(networks)):
                 networks[i].fitness = network_fitness[i]
         networks.sort(reverse=True)
-        averge = 0
-        for i in range(len(networks)):
-            averge += round(networks[i].fitness, 2)
-            print("Network:" + str(i) + "  Fitness:" + str(round(networks[i].fitness, 2)))
-        averge = round(averge / 96, 2)
-        print(averge)
+        average = 0
+        for i in range(networks_count):
+            average += round(networks[i].fitness, 2)
+            #print("Network:" + str(i) + "  Fitness:" + str(round(networks[i].fitness, 2)))
+        average = round(average / networks_count, 2)
+        print("Average Fitness: " + str(average) + " Time eclipsed:" + str(round(time.time() - t, 1)) + "s")
         # 3 of the bad networks were randomly chosen to survive
         # better networks still have better chance to survive
         new_networks = []
