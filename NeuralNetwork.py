@@ -70,7 +70,7 @@ class Neuron:
         self.value = 0
         self.connections = []
         for i in range(next_layer):
-            self.connections.append(0.0)
+            self.connections.append(random.random() * 2 - 1)
         self.value = 0
 
     def activate(self):

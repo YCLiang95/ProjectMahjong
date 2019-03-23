@@ -2,7 +2,7 @@ import Mahjong
 import NeuralNetwork
 import random
 import threading
-from multiprocessing import Process, Lock,  Array
+from multiprocessing import Process, Lock,  Manager
 from MahjongCalculator.mahjong.shanten import Shanten
 from MahjongCalculator.mahjong.tile import TilesConverter
 
@@ -10,9 +10,10 @@ tile_table = Mahjong.tile_table()
 dic = Mahjong.tile_dictionary()
 # win_table = MahjongWinTable.load_table("output.txt")
 win_table = []
-empty_hand_table = []
-games = []
 shanten = Shanten()
+
+def main():
+    test()
 
 
 def search(table, string, start_index, end_index):
@@ -59,10 +60,12 @@ def check_wining(hand):
     result = shanten.calculate_shanten(tiles)
     if result == -1:
         return 1.0
+    elif result == 1:
+        return 0.1
     elif result == -2:
         return 0.0
     else:
-        return 1/(result + 2)
+        return 0.0
 
 
 #def check_wining(hand):
@@ -76,10 +79,6 @@ def check_wining(hand):
 #    return search(win_table, s, 0, len(win_table))
 
 
-def main():
-    pass
-
-
 class TrainingThread(threading.Thread):
     def __init__(self, networks, start_index, end_index):
         threading.Thread.__init__(self)
@@ -91,15 +90,15 @@ class TrainingThread(threading.Thread):
         train(self.networks, self.start_index, self.end_index)
 
 
-def train(networks, start, end):
+def train(networks, start, end, arr_fitness, games):
     for Network in range(start, end):
-        networks[Network].fitness = 0
+        arr_fitness[Network] = 0
         for Rounds in range(50):
             fitness = 0.0
             mountain = games[Rounds].copy()
             river = []
             hand = []
-            hand_table = empty_hand_table.copy()
+            hand_table = [0 for i in range(34)]
             for i in range(13):
                 hand.append(mountain.pop())
                 hand_table[hand[i].order - 1] += 1
@@ -112,7 +111,7 @@ def train(networks, start, end):
                 fitness = max(fitness, check_wining(hand))
                 #if check_wining(hand):
                 if fitness == 1:
-                    networks[Network].fitness += 1
+                    arr_fitness[Network] += 1
                     break
                 for i in range(34):
                     networks[Network].layers[0][i].value = hand_table[i]
@@ -134,26 +133,25 @@ def train(networks, start, end):
                     fitness = max(fitness, check_wining(hand))
                     # if check_wining(hand):
                     if fitness == 1:
-                        networks[Network].fitness += 1
+                        arr_fitness[Network] += 1
                         mountain.clear()
                         break
                     hand_table[hand[13].order - 1] -= 1
                     river.append(hand.pop(13))
             if fitness != 1:
-                networks[Network].fitness += fitness
-        # print("Network:" + str(Network) + "  Fitness:" + str(round(networks[Network].fitness, 2)))
+                arr_fitness[Network] += fitness
+        print("Network:" + str(Network) + "  Fitness:" + str(round(arr_fitness[Network], 2)))
     pass
 
 
 def test():
+    games = []
     networks = []
     networks_count = 96
     threads_count = 12
     for i in range(networks_count):
         networks.append(NeuralNetwork.NeuralNetwork([34, 255, 255, 34]))
         networks[i].mutate()
-    for i in range(34):
-        empty_hand_table.append(0)
     for i in range(50):
         mountain = Mahjong.init()
         random.shuffle(mountain)
@@ -162,17 +160,16 @@ def test():
     # do 100 test run
     for Generations in range(100):
         print("Generation:" + str(Generations))
-        network_fitness = Array(0, range(networks_count))
-        # _thread.start_new_thread(train, (networks, i * 8, i * 8 + 8))
-        threads = []
-        for i in range(threads_count):
-            # threads.append(TrainingThread(networks, i * 8, i * 8 + 8))
-            threads.append(Process(target=train, args=(networks, i * 8, i * 8 + 8, network_fitness)))
-            threads[i].start()
-        for i in threads:
-            i.join()
-        for i in range(len(networks)):
-            networks[i].fitness = network_fitness[i]
+        with Manager() as manager:
+            network_fitness = manager.list(range(networks_count))
+            threads = []
+            for i in range(threads_count):
+                threads.append(Process(target=train, args=(networks, i * 8, i * 8 + 8, network_fitness, games)))
+                threads[i].start()
+            for i in threads:
+                i.join()
+            for i in range(len(networks)):
+                networks[i].fitness = network_fitness[i]
         networks.sort(reverse=True)
         averge = 0
         for i in range(len(networks)):
@@ -195,4 +192,6 @@ def test():
         networks = new_networks
 
 
-test()
+if __name__ == '__main__':
+    main()
+
