@@ -70,7 +70,8 @@ class Neuron:
         self.value = 0
         self.connections = []
         for i in range(next_layer):
-            self.connections.append(random.random() * 2 - 1)
+            #self.connections.append(random.random() * 2 - 1)
+            self.connections.append(0.0)
         self.value = 0
 
     def activate(self):
@@ -151,8 +152,16 @@ class NeuralNetwork:
                     j.activate()
 
     # print the neural network and save it to file
-    def print(self, file):
-        pass
+    def save(self, path):
+        with open(path, 'w+') as file:
+            file.write(str(len(self.layers)) + '\n')
+            for i in range(len(self.layers)):
+                file.write(str(len(self.layers[i])) + '\n')
+            for i in range(self.depth + 1):
+                for j in self.layers[i]:
+                    for k in j.connections:
+                        file.write(str(round(k, 3)) + '\n')
+        file.close()
 
     # load a neural network from file
     def load(self, file):

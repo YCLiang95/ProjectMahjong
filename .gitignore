@@ -114,3 +114,6 @@ dmypy.json
 .pyre/
 output_bak.txt
 MahjongCalculator/
+NeuroNet/
+.idea/
+.idea/workspace.xml

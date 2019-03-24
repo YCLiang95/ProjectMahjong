@@ -1,11 +1,10 @@
 import Mahjong
 import NeuralNetwork
 import random
-import threading
 import time
+import os
 from multiprocessing import Process, Lock,  Manager
 from MahjongCalculator.mahjong.shanten import Shanten
-from MahjongCalculator.mahjong.tile import TilesConverter
 
 tile_table = Mahjong.tile_table()
 dic = Mahjong.tile_dictionary()
@@ -13,51 +12,11 @@ dic = Mahjong.tile_dictionary()
 win_table = []
 shanten = Shanten()
 
-def main():
-    test()
-
-
-def search(table, string, start_index, end_index):
-    start = start_index
-    end = end_index - 1
-    while start <= end:
-        middle = start + round((end - start) / 2)
-        if string < table[middle]:
-            end = middle - 1
-        elif string > table[middle]:
-            start = middle + 1
-        else:
-            return True
-    return False
-
 
 def check_wining(hand):
-    suo = ""
-    pin = ""
-    man = ""
-    hornor = ""
+    tiles = [0 for i in range(34)]
     for i in hand:
-        if i.order <= 9:
-            man += str(i.order)
-        elif i.order > 9 and i.order <= 18:
-            pin += str(i.order - 9)
-        elif i.order > 18 and i.order <= 27:
-            suo += str(i.order - 18)
-        elif i.order == 28:
-            hornor += "1"
-        elif i.order == 29:
-            hornor += "2"
-        elif i.order == 30:
-            hornor += "3"
-        elif i.order == 31:
-            hornor += "4"
-        elif i.order == 32:
-            hornor += "7"
-        elif i.order == 33:
-            hornor += "6"
-        elif i.order == 34:
-            hornor += "5"
-    tiles = TilesConverter.string_to_34_array(man=man, pin=pin, sou=suo, honors=hornor)
+        tiles[i.order - 1] += 1
     result = shanten.calculate_shanten(tiles)
     if result == -1:
         return 1.0
@@ -69,36 +28,14 @@ def check_wining(hand):
         return 0.0
 
 
-#def check_wining(hand):
-#    t = []
-#    for i in hand:
-#        t.append(i.order)
-#    t.sort()
-#    s = ""
-#    for i in t:
-#        s += tile_table[i]
-#    return search(win_table, s, 0, len(win_table))
-
-
-class TrainingThread(threading.Thread):
-    def __init__(self, networks, start_index, end_index):
-        threading.Thread.__init__(self)
-        self.networks = networks
-        self.start_index = start_index
-        self.end_index = end_index
-
-    def run(self):
-        train(self.networks, self.start_index, self.end_index)
-
-
 def train(networks, start, end, arr_fitness, games):
     for Network in range(start, end):
         arr_fitness[Network] = 0
         for Rounds in range(len(games)):
-            fitness = 0.0
             mountain = games[Rounds].copy()
             river = []
             hand = []
+            ron = False
             hand_table = [0 for i in range(34)]
             for i in range(13):
                 hand.append(mountain.pop())
@@ -109,10 +46,10 @@ def train(networks, start, end, arr_fitness, games):
             while len(mountain) > 10:
                 hand.append(mountain.pop())
                 hand_table[hand[13].order - 1] += 1
-                fitness = max(fitness, check_wining(hand))
-                #if check_wining(hand):
-                if fitness == 1:
+                # if check_wining(hand):
+                if check_wining(hand) == 1:
                     arr_fitness[Network] += 1
+                    ron = True
                     break
                 for i in range(34):
                     networks[Network].layers[0][i].value = hand_table[i]
@@ -131,36 +68,40 @@ def train(networks, start, end, arr_fitness, games):
                 for i in range(3):
                     hand.append(mountain.pop())
                     hand_table[hand[13].order - 1] += 1
-                    fitness = max(fitness, check_wining(hand))
                     # if check_wining(hand):
-                    if fitness == 1:
+                    if check_wining(hand) == 1:
                         arr_fitness[Network] += 1
-                        mountain.clear()
+                        ron = True
                         break
                     hand_table[hand[13].order - 1] -= 1
                     river.append(hand.pop(13))
-            if fitness != 1:
-                arr_fitness[Network] += fitness
+                if ron:
+                    break
+            if not ron:
+                arr_fitness[Network] += check_wining(hand)
         #print("Network:" + str(Network) + "  Fitness:" + str(round(arr_fitness[Network], 2)))
 
 
 def test():
     games = []
     networks = []
-    networks_count = 96
-    threads_count = 4
-    cut_off = 24
+    networks_count = 960
+    threads_count = 12
+    cut_off = 80
     game_count = 10
+    generation_count = 100
     for i in range(networks_count):
-        networks.append(NeuralNetwork.NeuralNetwork([34, 127, 127, 34]))
+        networks.append(NeuralNetwork.NeuralNetwork([34, 128, 64, 34]))
         networks[i].mutate()
     for i in range(game_count):
         mountain = Mahjong.init()
         random.shuffle(mountain)
         games.append(mountain.copy())
+    if not os.path.exists("NeuroNet"):
+        os.makedirs("NeuroNet")
 
     # do 100 test run
-    for Generations in range(100):
+    for Generations in range(generation_count):
         t = time.time()
         print("Generation:" + str(Generations))
         with Manager() as manager:
@@ -175,9 +116,12 @@ def test():
                 networks[i].fitness = network_fitness[i]
         networks.sort(reverse=True)
         average = 0
+        if not os.path.exists("NeuroNet/" + str(Generations)):
+            os.makedirs("NeuroNet/" + str(Generations))
         for i in range(networks_count):
             average += round(networks[i].fitness, 2)
-            #print("Network:" + str(i) + "  Fitness:" + str(round(networks[i].fitness, 2)))
+            networks[i].save("NeuroNet/" + str(Generations) + "/"+str(i) + ".txt")
+            # print("Network:" + str(i) + "  Fitness:" + str(round(networks[i].fitness, 2)))
         average = round(average / networks_count, 2)
         print("Average Fitness: " + str(average) + " Time eclipsed:" + str(round(time.time() - t, 1)) + "s")
         # 3 of the bad networks were randomly chosen to survive
@@ -196,5 +140,5 @@ def test():
 
 
 if __name__ == '__main__':
-    main()
+    test()
 

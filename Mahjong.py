@@ -10,9 +10,9 @@ def tile_table():
     result.append("Nf")
     result.append("Xf")
     result.append("Bf")
-    result.append("Hz")
-    result.append("Fc")
     result.append("Bb")
+    result.append("Fc")
+    result.append("Hz")
     return result
 
 
@@ -58,7 +58,7 @@ def init():
         tile_mountain.append(Tile("Nf", 29))
         tile_mountain.append(Tile("Xf", 30))
         tile_mountain.append(Tile("Bf", 31))
-        tile_mountain.append(Tile("Hz", 32))
+        tile_mountain.append(Tile("Bb", 32))
         tile_mountain.append(Tile("Fc", 33))
-        tile_mountain.append(Tile("Bb", 34))
+        tile_mountain.append(Tile("Hz", 34))
     return tile_mountain
