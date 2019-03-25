@@ -164,5 +164,19 @@ class NeuralNetwork:
         file.close()
 
     # load a neural network from file
-    def load(self, file):
-        pass
+    def load(self, path):
+        with open(path, 'r') as file:
+            self.depth = int(file.readline())
+            self.NeuronCounts = []
+            for i in range(self.depth):
+                self.NeuronCounts.append(int(file.readline()))
+            self.layers = []
+            for i in range(len(self.NeuronCounts)):
+                self.layers.append([])
+                for j in range(self.NeuronCounts[i]):
+                    if i == len(self.NeuronCounts) - 1:
+                        self.layers[i].append(Neuron(i, 0))
+                    else:
+                        self.layers[i].append(Neuron(i, self.NeuronCounts[i + 1]))
+                    for k in range(len(self.layers[i][j].connections)):
+                        self.layers[i][j].connections[k] = float(file.readline())
