@@ -70,7 +70,7 @@ class Neuron:
         self.value = 0
         self.connections = []
         for i in range(next_layer):
-            #self.connections.append(random.random() * 2 - 1)
+            # self.connections.append(random.random() * 2 - 1)
             self.connections.append(0.0)
         self.value = 0
 
@@ -166,9 +166,9 @@ class NeuralNetwork:
     # load a neural network from file
     def load(self, path):
         with open(path, 'r') as file:
-            self.depth = int(file.readline())
+            self.depth = int(file.readline()) - 2
             self.NeuronCounts = []
-            for i in range(self.depth):
+            for i in range(self.depth + 2):
                 self.NeuronCounts.append(int(file.readline()))
             self.layers = []
             for i in range(len(self.NeuronCounts)):
@@ -178,5 +178,7 @@ class NeuralNetwork:
                         self.layers[i].append(Neuron(i, 0))
                     else:
                         self.layers[i].append(Neuron(i, self.NeuronCounts[i + 1]))
-                    for k in range(len(self.layers[i][j].connections)):
-                        self.layers[i][j].connections[k] = float(file.readline())
+                        for k in range(len(self.layers[i][j].connections)):
+                            a = float(file.readline())
+                            self.layers[i][j].connections[k] = a
+        file.close()

@@ -3,7 +3,7 @@ import NeuralNetwork
 import random
 import time
 import os
-from multiprocessing import Process, Lock,  Manager
+from multiprocessing import Process, Manager
 from MahjongCalculator.mahjong.shanten import Shanten
 
 tile_table = Mahjong.tile_table()
@@ -19,13 +19,11 @@ def check_wining(hand):
         tiles[i.order - 1] += 1
     result = shanten.calculate_shanten(tiles)
     if result == -1:
-        return 1.0
-    elif result == 1:
-        return 0.1
+        return 1000.0
     elif result == -2:
         return 0.0
     else:
-        return 0.0
+        return round(1 / (result + 2) * 1000, 2)
 
 
 def train(networks, start, end, arr_fitness, games):
@@ -79,31 +77,42 @@ def train(networks, start, end, arr_fitness, games):
                     break
             if not ron:
                 arr_fitness[Network] += check_wining(hand)
-        #print("Network:" + str(Network) + "  Fitness:" + str(round(arr_fitness[Network], 2)))
+        # print("Network:" + str(Network) + "  Fitness:" + str(round(arr_fitness[Network], 2)))
 
 
 def test():
-    games = []
     networks = []
     networks_count = 960
     threads_count = 12
     cut_off = 80
     game_count = 10
     generation_count = 100
+    pre_generation = 200
     for i in range(networks_count):
         networks.append(NeuralNetwork.NeuralNetwork([34, 128, 64, 34]))
         networks[i].mutate()
-    for i in range(game_count):
-        mountain = Mahjong.init()
-        random.shuffle(mountain)
-        games.append(mountain.copy())
     if not os.path.exists("NeuroNet"):
         os.makedirs("NeuroNet")
+    if os.path.exists("Networks/"):
+        i = 0
+        for filename in os.listdir("Networks/"):
+            networks[i].load("Networks/" + filename)
+            i += 1
+            if i >= networks_count:
+                break
+        print(str(i) + " Networks loaded")
 
     # do 100 test run
     for Generations in range(generation_count):
         t = time.time()
-        print("Generation:" + str(Generations))
+        print("Generation:" + str(pre_generation + Generations))
+
+        games = []
+        for i in range(game_count):
+            mountain = Mahjong.init()
+            random.shuffle(mountain)
+            games.append(mountain.copy())
+
         with Manager() as manager:
             network_fitness = manager.list(range(networks_count))
             threads = []
@@ -115,15 +124,40 @@ def test():
             for i in range(len(networks)):
                 networks[i].fitness = network_fitness[i]
         networks.sort(reverse=True)
+
         average = 0
-        if not os.path.exists("NeuroNet/" + str(Generations)):
-            os.makedirs("NeuroNet/" + str(Generations))
+        average_ten = 0
+        average_one = 0
+        average_fifty = 0
+        if not os.path.exists("NeuroNet/" + str(pre_generation + Generations)):
+            os.makedirs("NeuroNet/" + str(pre_generation + Generations))
         for i in range(networks_count):
             average += round(networks[i].fitness, 2)
-            networks[i].save("NeuroNet/" + str(Generations) + "/"+str(i) + ".txt")
+            if i <= networks_count / 100:
+                average_one += round(networks[i].fitness, 2)
+            elif i <= networks_count / 10:
+                average_ten += round(networks[i].fitness, 2)
+            elif i <= networks_count / 2:
+                average_fifty += round(networks[i].fitness, 2)
+            networks[i].save("NeuroNet/" + str(pre_generation + Generations) + "/"+str(i) + ".txt")
             # print("Network:" + str(i) + "  Fitness:" + str(round(networks[i].fitness, 2)))
         average = round(average / networks_count, 2)
+        average_fifty = (average_one + average_ten + average_fifty) / (networks_count / 2)
+        average_ten = (average_one + average_ten) / (networks_count / 10)
+        average_one = average_one / (networks_count / 100)
         print("Average Fitness: " + str(average) + " Time eclipsed:" + str(round(time.time() - t, 1)) + "s")
+        print("One Percentile: " + str(round(average_one, 2)))
+        print("Ten Percentile: " + str(round(average_ten, 2)))
+        print("Fifty Percentile: " + str(round(average_fifty, 2)))
+        with open("NeuroNet/" + str(pre_generation + Generations) + "/log.txt", 'w+') as file:
+            file.write("Average Fitness: " + str(average) + " Time eclipsed:" + str(round(time.time() - t, 1)) + "s" + '\n')
+            file.write("One Percentile: " + str(round(average_one, 2)) + '\n')
+            file.write("Ten Percentile: " + str(round(average_ten, 2)) + '\n')
+            file.write("Fifty Percentile: " + str(round(average_fifty, 2)) + '\n')
+            for i in range(networks_count):
+                file.write("Network " + str(i) + " Fitness: " + str(round(networks[i].fitness, 2)) + '\n')
+        file.close()
+
         # 3 of the bad networks were randomly chosen to survive
         # better networks still have better chance to survive
         new_networks = []
@@ -141,4 +175,3 @@ def test():
 
 if __name__ == '__main__':
     test()
-
