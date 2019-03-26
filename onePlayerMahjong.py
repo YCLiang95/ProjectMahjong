@@ -3,14 +3,21 @@ import NeuralNetwork
 import random
 import time
 import os
+import sys
+
 from multiprocessing import Process, Manager
-from MahjongCalculator.mahjong.shanten import Shanten
+sys.path.append('MahjongCalculator')
+
+from mahjong.shanten import Shanten
+from mahjong.tile import TilesConverter
+from mahjong.hand_calculating.hand import HandCalculator
 
 tile_table = Mahjong.tile_table()
 dic = Mahjong.tile_dictionary()
 # win_table = MahjongWinTable.load_table("output.txt")
 win_table = []
 shanten = Shanten()
+calculator = HandCalculator()
 
 
 def check_wining(hand):
@@ -19,11 +26,26 @@ def check_wining(hand):
         tiles[i.order - 1] += 1
     result = shanten.calculate_shanten(tiles)
     if result == -1:
-        return 1000.0
+        win_tile = [0 for i in range(34)]
+        win_tile[hand[13].order - 1] = 1
+        a = TilesConverter.to_136_array(tiles)
+        b = TilesConverter.to_136_array(win_tile)[0]
+        result = calculator.estimate_hand_value(a, b)
+        if result.cost is None:
+            return 100
+        else:
+            return result.cost['main'] + result.cost['additional']
     elif result == -2:
-        return 0.0
+        return 0
+    elif result == 0:
+        return 100
+    elif result == 1:
+        return 10
+    elif result == 2:
+        return 1
     else:
-        return round(1 / (result + 2) * 1000, 2)
+        return 0
+        # return round(1 / (result + 2) * 1000, 2)
 
 
 def train(networks, start, end, arr_fitness, games):
@@ -45,8 +67,9 @@ def train(networks, start, end, arr_fitness, games):
                 hand.append(mountain.pop())
                 hand_table[hand[13].order - 1] += 1
                 # if check_wining(hand):
-                if check_wining(hand) == 1:
-                    arr_fitness[Network] += 1
+                score = check_wining(hand)
+                if score >= 1000:
+                    arr_fitness[Network] += score
                     ron = True
                     break
                 for i in range(34):
@@ -67,8 +90,9 @@ def train(networks, start, end, arr_fitness, games):
                     hand.append(mountain.pop())
                     hand_table[hand[13].order - 1] += 1
                     # if check_wining(hand):
-                    if check_wining(hand) == 1:
-                        arr_fitness[Network] += 1
+                    score = check_wining(hand)
+                    if score >= 1000:
+                        arr_fitness[Network] += score
                         ron = True
                         break
                     hand_table[hand[13].order - 1] -= 1
