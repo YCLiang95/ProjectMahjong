@@ -3,8 +3,14 @@ import random
 import base64
 import json
 
+@staticmethod
 def sigmoid(x):
     return 1 / (1 + math.exp(-x))
+
+
+@staticmethod
+def relu(x):
+    return max(x, 0)
 
 
 def create(layers):
@@ -62,21 +68,28 @@ def uniform_crossover(father, mother):
 
 # Neural network class, core of neural network
 class Neuron:
-    # activation = sigmoid
+    activation = 0
 
     def __init__(self, layer, next_layer):
         self.layer = layer
         self.active = False
         self.value = 0
         self.connections = []
-        for i in range(next_layer):
-            # self.connections.append(random.random() * 2 - 1)
-            self.connections.append(0.0)
+        if next_layer == 0:
+            self.activation = 1
+        else:
+            for i in range(next_layer):
+                # self.connections.append(random.random() * 2 - 1)
+                self.connections.append(0.0)
         self.value = 0
 
     def activate(self):
+        if self.activation == 0:
+            self.value = max(0.0, self.value)
+        else:
+            self.value = 1 / (1 + math.exp(-self.value))
         # self.value = self.activation(self.value)
-        self.value = sigmoid(self.value)
+        # self.value = self.activation(self.value)
 
     def clone(self, parent):
         self.layer = parent.layer

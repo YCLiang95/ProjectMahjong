@@ -111,7 +111,7 @@ def test():
     cut_off = 80
     game_count = 10
     generation_count = 100
-    pre_generation = 200
+    pre_generation = 300
     for i in range(networks_count):
         networks.append(NeuralNetwork.NeuralNetwork([34, 128, 64, 34]))
         networks[i].mutate()
@@ -191,9 +191,11 @@ def test():
         networks[round(networks_count / 2) - 3] = networks[round(networks_count / 2) - 3 + i]
         networks[round(networks_count / 2) - 2] = networks[round(networks_count / 2) - 2 + i + j]
         networks[round(networks_count / 2) - 1] = networks[round(networks_count / 2) - 1 + i + j + k]
+
         for i in range(round(networks_count / 2)):
             j = random.randint(0, round(networks_count / 2))
             new_networks += NeuralNetwork.uniform_crossover(networks[i], networks[j])
+        new_networks[len(new_networks) - 1] = networks[0]
         networks = new_networks
 
 
