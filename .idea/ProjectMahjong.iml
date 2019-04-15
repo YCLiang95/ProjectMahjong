@@ -6,8 +6,9 @@
       <excludeFolder url="file://$MODULE_DIR$/NeuroNet" />
       <excludeFolder url="file://$MODULE_DIR$/bak" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/venv2" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.7 (ProjectMahjong)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.7 (ProjectMahjong) (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TestRunnerService">
