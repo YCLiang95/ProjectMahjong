@@ -175,6 +175,8 @@ def test():
                     average += network_fitness[i]
                 average = average / (threads_count * test_per_thread)
                 print("Generation " + str(Generations) + " Validation Average fitness: " + str(round(average, 2)))
+                with open("NeuroNet/" + str(pre_generation + Generations) + "/validation.txt", 'w+') as file:
+                    file.write("Generation " + str(Generations) + " Validation Average fitness: " + str(round(average, 2)) + '\n')
 
         average = 0
         average_ten = 0
