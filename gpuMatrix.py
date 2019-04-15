@@ -1,4 +1,4 @@
-from numba import cuda, float32
+from numba import cuda
 import numpy as np
 import math
 from timeit import default_timer as time

@@ -1,37 +1,51 @@
 import math
 import random
-import numpy
-from numba import cuda, float32
+import numpy as np
+from numba import cuda
+
+m = 512
+n = 512
+BLOCK_SIZE = 512
 
 
-size = 512
+@cuda.jit('void(f4[:], f4[:])')
+def sigmoid_activate(vector):
+    index = cuda.blockIdx.x * cuda.blockDim.x + cuda.threadIdx.x
+    if index < m:
+        vector[index] = 1.0 / (1.0 + math.exp(-vector[index]))
 
-@cuda.jit
-def matmul(neurons, connections, result):
-    sA = cuda.shared.array(shape=(size, size), dtype=float32)
-    sB = cuda.shared.array(shape=(size, size), dtype=float32)
-    x, y = cuda.grid(2)
-    tx = cuda.threadIdx.x
-    ty = cuda.threadIdx.y
 
-    if x >= result.shape[0] and y >= result.shape[1]:
-        return
+@cuda.jit('void(f4[:,:], f4[:], f4[:])')
+def sigmoid_layer(matrix, vector, result):
+    row = cuda.grid(1)
+    if row < m:
+        temp = 0
+        for i in range(n):
+            temp += matrix[row, i] * vector[row]
+        result[row] = 1.0 / (1.0 + math.exp(-vector[temp]))
 
-        tmp = 0.
-        for k in range(A.shape[1]):
-            tmp += A[i, k] * B[k, j]
-        result[i, j] = tmp
+
+@cuda.jit('void(f4[:,:], f4[:], f4[:])')
+def relu_layer(matrix, vector, result):
+    row = cuda.grid(1)
+    if row < m:
+        temp = 0
+        for i in range(n):
+            temp += matrix[row, i] * vector[row]
+        result[row] = max(0.0, temp)
 
 
 class NeuralNetwork:
-
     def __init__(self, layers=[34, 255, 255, 34]):
         self.fitness = 0
-        self.neurons = []
-        for i in layers:
-            a = []
-
-        pass
+        self.layers = layers
+        self.depth = len(layers)
+        self.inputLayer = np.zeros(layers[0])
+        self.outputLayer = np.zeros(layers[len(layers) - 1])
+        self.connection = []
+        for i in range(len(layers) - 1):
+            a = np.array(np.random.uniform(low=-1.0, high=1.0, size=(layers[i], layers[i + 1])), dtype=np.float32)
+            self.connection.append(a)
 
     def __lt__(self, other):
         return self.fitness < other.fitness
@@ -46,7 +60,19 @@ class NeuralNetwork:
         pass
 
     def evaluate(self):
-        pass
+        layer = self.inputLayer
+        for i in range(len(self.layers) - 1):
+            output_layer = np.zeros(self.layers[i + 1])
+            dA = cuda.to_device(layer)
+            dB = cuda.to_device(self.connection[i])
+            dC = cuda.to_device(output_layer)
+            if i == self.depth - 2:
+                sigmoid_layer[(self.layers[i] + BLOCK_SIZE - 1) // BLOCK_SIZE, BLOCK_SIZE](dA, dB, dC)
+            else:
+                relu_layer[(self.layers[i] + BLOCK_SIZE - 1) // BLOCK_SIZE, BLOCK_SIZE](dA, dB, dC)
+            dC.copy_to_host()
+            layer = output_layer
+        self.outputLayer = layer
 
     # print the neural network and save it to file
     def save(self, path):
