@@ -16,20 +16,20 @@ def sigmoid_activate(vector, m):
 @cuda.jit('void(f4[:,:], f4[:], f4[:], int32, int32)')
 def sigmoid_layer(matrix, vector, result, m, n):
     row = cuda.grid(1)
-    if row < m:
+    if row < n:
         temp = 0
-        for i in range(n):
-            temp += matrix[row, i] * vector[row]
+        for i in range(m):
+            temp += matrix[i, row] * vector[i]
         result[row] = 1.0 / (1.0 + math.exp(-temp))
 
 
 @cuda.jit('void(f4[:,:], f4[:], f4[:], int32, int32)')
 def relu_layer(matrix, vector, result, m, n):
     row = cuda.grid(1)
-    if row < m:
+    if row < n:
         temp = 0
-        for i in range(n):
-            temp += matrix[row, i] * vector[row]
+        for i in range(m):
+            temp += matrix[i, row] * vector[i]
         result[row] = max(0.0, temp)
 
 
@@ -65,13 +65,9 @@ class NeuralNetwork:
             dB = cuda.to_device(self.connection[i])
             dC = cuda.to_device(output_layer)
             if i == self.depth - 2:
-                sigmoid_layer[(self.layers[i] + BLOCK_SIZE - 1) // BLOCK_SIZE, BLOCK_SIZE](dA, dB, dC,
-                                                                                           self.layers[i],
-                                                                                           self.layers[i + 1])
+                sigmoid_layer[(self.layers[i + 1] + BLOCK_SIZE - 1) // BLOCK_SIZE, BLOCK_SIZE](dA, dB, dC, self.layers[i], self.layers[i + 1])
             else:
-                relu_layer[(self.layers[i] + BLOCK_SIZE - 1) // BLOCK_SIZE, BLOCK_SIZE](dA, dB, dC,
-                                                                                        self.layers[i],
-                                                                                        self.layers[i + 1])
+                relu_layer[(self.layers[i + 1] + BLOCK_SIZE - 1) // BLOCK_SIZE, BLOCK_SIZE](dA, dB, dC, self.layers[i], self.layers[i + 1])
             dC.copy_to_host()
             layer = output_layer
         self.outputLayer = layer
@@ -82,7 +78,7 @@ class NeuralNetwork:
             output_layer = np.zeros(self.layers[i + 1])
             for j in range(self.layers[i]):
                 for k in range(self.layers[i + 1]):
-                    output_layer[k] += layer[j] * self.connection[j, k]
+                    output_layer[k] += layer[j] * self.connection[j][k]
 
             for k in range(self.layers[i + 1]):
                 if i == self.depth - 2:
