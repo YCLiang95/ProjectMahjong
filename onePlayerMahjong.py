@@ -107,11 +107,12 @@ def train(networks, start, end, arr_fitness, games):
 def test():
     networks = []
     networks_count = 960
-    threads_count = 12
+    threads_count = 4
     cut_off = 80
+    test_per_thread = 10
     game_count = 10
-    generation_count = 100
-    pre_generation = 300
+    generation_count = 500
+    pre_generation = 0
     for i in range(networks_count):
         networks.append(NeuralNetwork.NeuralNetwork([34, 128, 64, 34]))
         networks[i].mutate()
@@ -126,28 +127,54 @@ def test():
                 break
         print(str(i) + " Networks loaded")
 
-    # do 100 test run
+    validation_games = []
+    games = []
+    for i in range(game_count):
+        mountain = Mahjong.init()
+        random.shuffle(mountain)
+        validation_games.append(mountain.copy())
+        games.append(mountain.copy())
+
+    # do 300 test run
     for Generations in range(generation_count):
         t = time.time()
         print("Generation:" + str(pre_generation + Generations))
 
-        games = []
-        for i in range(game_count):
-            mountain = Mahjong.init()
-            random.shuffle(mountain)
-            games.append(mountain.copy())
+        if Generations >= 100:
+            games = []
+            for i in range(game_count):
+                mountain = Mahjong.init()
+                random.shuffle(mountain)
+                games.append(mountain.copy())
 
         with Manager() as manager:
             network_fitness = manager.list(range(networks_count))
             threads = []
             for i in range(threads_count):
-                threads.append(Process(target=train, args=(networks, i * cut_off, i * cut_off + cut_off, network_fitness, games)))
+                threads.append(Process(target=train, args=(networks, i * cut_off,
+                                                           i * cut_off + cut_off,
+                                                           network_fitness, games)))
                 threads[i].start()
             for i in threads:
                 i.join()
             for i in range(len(networks)):
                 networks[i].fitness = network_fitness[i]
-        networks.sort(reverse=True)
+            networks.sort(reverse=True)
+
+            if Generations % 10 == 0 and Generations >= 100:
+                threads = []
+                for i in range(threads_count):
+                    threads.append(Process(target=train, args=(networks, i * test_per_thread,
+                                                               i * test_per_thread + test_per_thread,
+                                                               network_fitness, validation_games)))
+                    threads[i].start()
+                for i in threads:
+                    i.join()
+                average = 0
+                for i in range(threads_count * test_per_thread):
+                    average += network_fitness[i]
+                average = average / (threads_count * test_per_thread)
+                print("Generation " + str(Generations) + " Validation Average fitness: " + str(round(average, 2)))
 
         average = 0
         average_ten = 0
