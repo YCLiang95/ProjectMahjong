@@ -33,13 +33,13 @@ def relu_layer(matrix, vector, result, m, n):
         result[row] = max(0.0, temp)
 
 
-class NeuralNetwork:
+class MLP:
     def __init__(self, layers=[34, 255, 255, 34]):
         self.fitness = 0
         self.layers = layers
         self.depth = len(layers)
-        self.inputLayer = np.zeros(layers[0])
-        self.outputLayer = np.zeros(layers[len(layers) - 1])
+        self.inputLayer = np.zeros(layers[0], dtype=np.float32)
+        self.outputLayer = np.zeros(layers[len(layers) - 1], dtype=np.float32)
         self.connection = []
         for i in range(len(layers) - 1):
             a = np.array(np.random.uniform(low=-1.0, high=1.0, size=(layers[i], layers[i + 1])), dtype=np.float32)
@@ -54,21 +54,18 @@ class NeuralNetwork:
     def mutate(self):
         pass
 
-    def reset(self):
-        pass
-
     def evaluate(self):
         layer = self.inputLayer
         for i in range(len(self.layers) - 1):
-            output_layer = np.zeros(self.layers[i + 1])
-            dA = cuda.to_device(layer)
-            dB = cuda.to_device(self.connection[i])
+            output_layer = np.zeros(self.layers[i + 1], dtype=np.float32)
+            dA = cuda.to_device(self.connection[i])
+            dB = cuda.to_device(layer)
             dC = cuda.to_device(output_layer)
             if i == self.depth - 2:
                 sigmoid_layer[(self.layers[i + 1] + BLOCK_SIZE - 1) // BLOCK_SIZE, BLOCK_SIZE](dA, dB, dC, self.layers[i], self.layers[i + 1])
             else:
                 relu_layer[(self.layers[i + 1] + BLOCK_SIZE - 1) // BLOCK_SIZE, BLOCK_SIZE](dA, dB, dC, self.layers[i], self.layers[i + 1])
-            dC.copy_to_host()
+            dC.to_host()
             layer = output_layer
         self.outputLayer = layer
 
@@ -78,7 +75,7 @@ class NeuralNetwork:
             output_layer = np.zeros(self.layers[i + 1])
             for j in range(self.layers[i]):
                 for k in range(self.layers[i + 1]):
-                    output_layer[k] += layer[j] * self.connection[j][k]
+                    output_layer[k] += layer[j] * self.connection[i][j][k]
 
             for k in range(self.layers[i + 1]):
                 if i == self.depth - 2:
