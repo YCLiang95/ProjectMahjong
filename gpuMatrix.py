@@ -3,20 +3,18 @@ import numpy as np
 import math
 from timeit import default_timer as time
 
-m = 100000 
-n = 100
 BLOCK_SIZE = 100
 
 
-@cuda.jit('void(f4[:], f4[:])')
-def sigmoid_activate(vector, result):
+@cuda.jit('void(f4[:], f4[:], int32)')
+def sigmoid_activate(vector, result, m):
     index = cuda.blockIdx.x * cuda.blockDim.x + cuda.threadIdx.x
     if index < m:
         result[index] = 1.0 / (1.0 + math.exp(-vector[index]))
 
 
-@cuda.jit('void(f4[:,:], f4[:], f4[:])')
-def cu_matrix_vector(matrix, vector, result):
+@cuda.jit('void(f4[:,:], f4[:], f4[:], int32, int32)')
+def cu_matrix_vector(matrix, vector, result, m, n):
     row = cuda.grid(1)
     if row < m:
         temp = 0
@@ -24,6 +22,9 @@ def cu_matrix_vector(matrix, vector, result):
             temp += matrix[row, i] * vector[row]
         result[row] = temp
 
+
+m = 100000
+n = 100
 
 A = np.array(np.random.uniform(low=-1.0, high=1.0, size=(m, n)), dtype=np.float32)
 B = np.array(np.random.random(m), dtype=np.float32)
@@ -36,7 +37,7 @@ dB = cuda.to_device(B)
 dC = cuda.to_device(C)
 # dD = cuda.to_device(D)
 
-cu_matrix_vector[(m+511)//512, 512](dA, dB, dC)
+cu_matrix_vector[(m+511)//512, 512](dA, dB, dC, m, n)
 # sigmoid_activate[(m+511)//512, 512](dC, dD)
 
 dC.to_host()

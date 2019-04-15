@@ -3,30 +3,28 @@ import random
 import numpy as np
 from numba import cuda
 
-m = 512
-n = 512
 BLOCK_SIZE = 512
 
 
-@cuda.jit('void(f4[:], f4[:])')
-def sigmoid_activate(vector):
+@cuda.jit('void(f4[:], int32)')
+def sigmoid_activate(vector, m):
     index = cuda.blockIdx.x * cuda.blockDim.x + cuda.threadIdx.x
     if index < m:
         vector[index] = 1.0 / (1.0 + math.exp(-vector[index]))
 
 
-@cuda.jit('void(f4[:,:], f4[:], f4[:])')
-def sigmoid_layer(matrix, vector, result):
+@cuda.jit('void(f4[:,:], f4[:], f4[:], int32, int32)')
+def sigmoid_layer(matrix, vector, result, m, n):
     row = cuda.grid(1)
     if row < m:
         temp = 0
         for i in range(n):
             temp += matrix[row, i] * vector[row]
-        result[row] = 1.0 / (1.0 + math.exp(-vector[temp]))
+        result[row] = 1.0 / (1.0 + math.exp(-temp))
 
 
-@cuda.jit('void(f4[:,:], f4[:], f4[:])')
-def relu_layer(matrix, vector, result):
+@cuda.jit('void(f4[:,:], f4[:], f4[:], int32, int32)')
+def relu_layer(matrix, vector, result, m, n):
     row = cuda.grid(1)
     if row < m:
         temp = 0
@@ -67,10 +65,31 @@ class NeuralNetwork:
             dB = cuda.to_device(self.connection[i])
             dC = cuda.to_device(output_layer)
             if i == self.depth - 2:
-                sigmoid_layer[(self.layers[i] + BLOCK_SIZE - 1) // BLOCK_SIZE, BLOCK_SIZE](dA, dB, dC)
+                sigmoid_layer[(self.layers[i] + BLOCK_SIZE - 1) // BLOCK_SIZE, BLOCK_SIZE](dA, dB, dC,
+                                                                                           self.layers[i],
+                                                                                           self.layers[i + 1])
             else:
-                relu_layer[(self.layers[i] + BLOCK_SIZE - 1) // BLOCK_SIZE, BLOCK_SIZE](dA, dB, dC)
+                relu_layer[(self.layers[i] + BLOCK_SIZE - 1) // BLOCK_SIZE, BLOCK_SIZE](dA, dB, dC,
+                                                                                        self.layers[i],
+                                                                                        self.layers[i + 1])
             dC.copy_to_host()
+            layer = output_layer
+        self.outputLayer = layer
+
+    def evaluate_cpu(self):
+        layer = self.inputLayer
+        for i in range(len(self.layers) - 1):
+            output_layer = np.zeros(self.layers[i + 1])
+            for j in range(self.layers[i]):
+                for k in range(self.layers[i + 1]):
+                    output_layer[k] += layer[j] * self.connection[j, k]
+
+            for k in range(self.layers[i + 1]):
+                if i == self.depth - 2:
+                    output_layer[k] = 1.0 / (1.0 + math.exp(-output_layer[k]))
+                else:
+                    output_layer[k] = max(0, output_layer[k])
+
             layer = output_layer
         self.outputLayer = layer
 
