@@ -1,4 +1,31 @@
 import numpy as np
+from numba import cuda
+from timeit import default_timer as time
+import math
+
+
+@cuda.jit('void(f4[:,:,:], f4[:,:,:], f4[:,:,:,:])')
+def apply_filter(input, filter, output):
+    x = cuda.blockIdx.x
+    y = cuda.blockIdx.y
+    i = cuda.threadIdx.x
+    j = cuda.threadIdx.y
+    # if x < input.shape[0] and y < input.shape[1]:
+    if i < output.shape[2] and j < output.shape[3]:
+        for a in range(filter.shape[1]):
+            for b in range(filter.shape[2]):
+                output[x, y, i, j] += input[x, i + a, j + b] * filter[y, a, b]
+                # output[x, y, i, j] = 1
+
+
+@cuda.jit('void(f4[:,:,:,:], f4[:,:,:], int32)')
+def sum_up(input, output, input_height):
+    x = cuda.blockIdx.x
+    i = cuda.threadIdx.x
+    j = cuda.threadIdx.y
+    for a in range(input_height):
+        output[x, i, j] += input[a, x, i, j]
+    output[x, i, j] = max(0, output[x, i, j])
 
 
 class ConvolutionalLayer:
@@ -7,9 +34,23 @@ class ConvolutionalLayer:
         self.shape = shape
         self.filter_shape = filter_shape
         self.activation = activation
-        self.inputLayer = np.zeros(shape=shape)
-        self.outputLayer = np.zeros(shape=(height, shape[1] - filter_shape[0] + 1, shape[2] - filter_shape[1] + 1))
-        self.filter = np.array(np.random.uniform(low=-1.0, high=1.0, size=(height, filter_shape[0], filter_shape[1])))
+        self.inputLayer = np.zeros(shape=shape, dtype=np.float32)
+        self.outputLayer = np.zeros(shape=(height, shape[1] - filter_shape[0] + 1, shape[2] - filter_shape[1] + 1), dtype=np.float32)
+        self.filter = np.array(np.random.uniform(low=-1.0, high=1.0, size=(height, filter_shape[0], filter_shape[1])), dtype=np.float32)
+
+    def evaluate(self):
+        temp = np.zeros(shape=(self.shape[0], self.height, self.shape[1] - self.filter_shape[0] + 1,
+                               self.shape[2] - self.filter_shape[1] + 1), dtype=np.float32)
+        self.outputLayer = np.zeros(shape=(self.height, self.shape[1] - self.filter_shape[0] + 1,
+                                           self.shape[2] - self.filter_shape[1] + 1), dtype=np.float32)
+        dA = cuda.to_device(self.inputLayer)
+        dB = cuda.to_device(self.filter)
+        dC = cuda.to_device(temp)
+        dD = cuda.to_device(self.outputLayer)
+        apply_filter[(self.shape[0], self.height), (self.shape[1], self.shape[2])](dA, dB, dC)
+        sum_up[self.height, (self.shape[1] - self.filter_shape[0] + 1,
+                             self.shape[2] - self.filter_shape[1] + 1)](dC, dD, self.shape[0])
+        dD.to_host()
 
     def evaluate_cpu(self):
         self.outputLayer = np.zeros(shape=(self.height, self.shape[1] - self.filter_shape[0] + 1,
@@ -26,10 +67,3 @@ class ConvolutionalLayer:
                 for k in range(len(self.outputLayer[0][0])):
                     if self.activation == "Relu":
                         self.outputLayer[i][j][k] = max(0, self.outputLayer[i][j][k])
-
-
-t = ConvolutionalLayer()
-a = np.array(np.random.uniform(low=-1.0, high=1.0, size=(128, 34, 4)), dtype=np.float32)
-t.inputLayer = a
-t.evaluate_cpu()
-print(t.outputLayer)
