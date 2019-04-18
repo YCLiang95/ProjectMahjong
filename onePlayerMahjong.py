@@ -8,9 +8,9 @@ import sys
 from multiprocessing import Process, Manager
 sys.path.append('MahjongCalculator')
 
-from mahjong.shanten import Shanten
-from mahjong.tile import TilesConverter
-from mahjong.hand_calculating.hand import HandCalculator
+from MahjongCalculator.mahjong.shanten import Shanten
+from MahjongCalculator.mahjong.tile import TilesConverter
+from MahjongCalculator.mahjong.hand_calculating.hand import HandCalculator
 
 tile_table = Mahjong.tile_table()
 dic = Mahjong.tile_dictionary()

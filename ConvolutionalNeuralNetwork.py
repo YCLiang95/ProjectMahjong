@@ -1,5 +1,6 @@
 import numpy as np
 from numba import cuda
+from numba.cuda.random import create_xoroshiro128p_states, xoroshiro128p_uniform_float32, xoroshiro128p_normal_float32
 from timeit import default_timer as time
 import math
 
@@ -28,7 +29,23 @@ def sum_up(input, output, input_height):
     output[x, i, j] = max(0, output[x, i, j])
 
 
+@cuda.jit
+def mutate_gpu(filter, rate, rng_states):
+    thread_id = cuda.grid(1)
+    if thread_id == 0:
+        cuda.syncthreads()
+    a = xoroshiro128p_uniform_float32(rng_states, thread_id)
+    if a < rate:
+        x = cuda.blockIdx.x
+        i = cuda.threadIdx.x
+        j = cuda.threadIdx.y
+        b = xoroshiro128p_uniform_float32(rng_states, thread_id) * 2 - 1
+        filter[x, i, j] += b
+
+
 class ConvolutionalLayer:
+    mutation_rate = 0.2
+
     def __init__(self, shape=(128, 34, 4), filter_shape=(3, 2), height=128, activation="Relu"):
         self.height = height
         self.shape = shape
@@ -37,6 +54,20 @@ class ConvolutionalLayer:
         self.inputLayer = np.zeros(shape=shape, dtype=np.float32)
         self.outputLayer = np.zeros(shape=(height, shape[1] - filter_shape[0] + 1, shape[2] - filter_shape[1] + 1), dtype=np.float32)
         self.filter = np.array(np.random.uniform(low=-1.0, high=1.0, size=(height, filter_shape[0], filter_shape[1])), dtype=np.float32)
+        # self.rng_states = create_xoroshiro128p_states(self.height * self.filter_shape[0] * self.filter_shape[1], seed=1)
+
+    def mutate_gpu(self):
+        dA = cuda.to_device(self.filter)
+        mutate_gpu[self.height, (self.filter_shape[0], self.filter_shape[1])](dA, self.mutation_rate, self.rng_states)
+        dA.to_host()
+
+    def mutate(self):
+        for i in range(self.height):
+            for j in range(self.filter_shape[0]):
+                for k in range(self.filter_shape[1]):
+                    q = np.random.uniform(low=0.0, high=1.0, size=1)
+                    if q < 0.2:
+                        self.filter[i, j, k] += np.random.uniform(low=-1.0, high=1.0, size=1)
 
     def evaluate(self):
         temp = np.zeros(shape=(self.shape[0], self.height, self.shape[1] - self.filter_shape[0] + 1,

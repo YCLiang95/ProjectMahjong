@@ -34,13 +34,9 @@ def relu_layer(matrix, vector, result, m, n):
 
 
 class MLP:
-    mutation_rate = 0.2
-
-    def __init__(self, layers=[34, 255, 255, 34]):
+    def __init__(self, input = 128, output = 128):
         self.fitness = 0
-        self.layers = layers
-        self.depth = len(layers)
-        self.inputLayer = np.zeros(layers[0], dtype=np.float32)
+        self.inputLayer = np.zeros(neurons, dtype=np.float32)
         self.outputLayer = np.zeros(layers[len(layers) - 1], dtype=np.float32)
         self.connection = []
         for i in range(len(layers) - 1):
@@ -50,15 +46,14 @@ class MLP:
     def __lt__(self, other):
         return self.fitness < other.fitness
 
+    def encode(self):
+        pass
+
     def mutate(self):
-        for i in range(len(self.connection)):
-            for j in range(len(self.connection[i])):
-                if random.random() * 100 < self.mutation_rate:
-                    self.connection[i][j] += random.random() * 4 - 2
+        pass
 
     def evaluate(self):
         layer = self.inputLayer
-        for i in range(len(self.layers) - 1):
             output_layer = np.zeros(self.layers[i + 1], dtype=np.float32)
             dA = cuda.to_device(self.connection[i])
             dB = cuda.to_device(layer)
@@ -68,7 +63,6 @@ class MLP:
             else:
                 relu_layer[(self.layers[i + 1] + BLOCK_SIZE - 1) // BLOCK_SIZE, BLOCK_SIZE](dA, dB, dC, self.layers[i], self.layers[i + 1])
             dC.to_host()
-            layer = output_layer
         self.outputLayer = layer
 
     def evaluate_cpu(self):
@@ -87,9 +81,6 @@ class MLP:
 
             layer = output_layer
         self.outputLayer = layer
-
-    def encode(self):
-        pass
 
     # print the neural network and save it to file
     def save(self, path):
