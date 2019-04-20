@@ -36,7 +36,7 @@ def relu_layer(matrix, vector, result, m, n):
 class MLP:
     mutation_rate = 0.2
 
-    def __init__(self, layers=[34, 255, 255, 34]):
+    def __init__(self, layers=(34, 255, 255, 34)):
         self.fitness = 0
         self.layers = layers
         self.depth = len(layers)
