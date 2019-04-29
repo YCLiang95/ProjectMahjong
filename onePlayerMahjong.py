@@ -4,21 +4,20 @@ import random
 import time
 import os
 import sys
+import MahjongGame
 
 from multiprocessing import Process, Manager
 sys.path.append('MahjongCalculator')
-
-
 
 
 def train(networks, start, end, arr_fitness, games):
     for Network in range(start, end):
         arr_fitness[Network] = 0
         for Rounds in range(len(games)):
-            mountain = games[Rounds].copy()
-            river = []
-            hand = []
-            ron = False
+            tracker = MahjongGame.GameTracker()
+            tracker.tile_mountain = games[Rounds].copy()
+            tracker.initial_draw()
+
             hand_table = [0 for i in range(34)]
             for i in range(13):
                 hand.append(mountain.pop())

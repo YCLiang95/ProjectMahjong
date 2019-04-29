@@ -1,10 +1,7 @@
-import Mahjong
 from MahjongCalculator.mahjong.shanten import Shanten
 from MahjongCalculator.mahjong.tile import TilesConverter
 from MahjongCalculator.mahjong.hand_calculating.hand import HandCalculator
 
-tile_table = Mahjong.tile_table()
-dic = Mahjong.tile_dictionary()
 # win_table = MahjongWinTable.load_table("output.txt")
 win_table = []
 shanten = Shanten()
@@ -18,7 +15,7 @@ def check_wining(hand):
     result = shanten.calculate_shanten(tiles)
     if result == -1:
         win_tile = [0 for i in range(34)]
-        win_tile[hand[13].order - 1] = 1
+        win_tile[hand[13].order] = 1
         a = TilesConverter.to_136_array(tiles)
         b = TilesConverter.to_136_array(win_tile)[0]
         result = calculator.estimate_hand_value(a, b)
@@ -42,10 +39,10 @@ def check_wining(hand):
 class GameTracker:
 
     def __init__(self):
-        self.player_hand = [([[0, 0, 0, 0]] * 34)] * 4
-        self.tile_river = [([[0, 0, 0, 0]] * 34)] * 4
+        self.player_hand = [[[0 for i in range(4)] for j in range(34)] for k in range(4)]
+        self.tile_river = [[[0 for i in range(4)] for j in range(34)] for k in range(4)]
         self.tile_mountain = []
-        self.bounce = [[0, 0, 0, 0]] * 34
+        self.bounce = [[0 for i in range(4)] for j in range(34)]
         self.output_array = [[], [], [], []]
         for i in range(4):
             self.output_array[i] = [[], [], [], [], [], []]

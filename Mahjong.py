@@ -33,17 +33,9 @@ class Tile:
         self.order = order
 
 
-class Game:
-    def __init__(self):
-        pass
-
-    def check_wining(self):
-        pass
-
-
 def init():
     tile_mountain = []
-    for i in range(1, 10):
+    for i in range(9):
         for j in range(4):
             if i == 5 and j == 3:
                 tile_mountain.append(Tile("Ts", 18 + i))
@@ -54,11 +46,11 @@ def init():
                 tile_mountain.append(Tile(str(i) + "P", 9 + i))
                 tile_mountain.append(Tile(str(i) + "M", i))
     for i in range(4):
-        tile_mountain.append(Tile("Df", 28))
-        tile_mountain.append(Tile("Nf", 29))
-        tile_mountain.append(Tile("Xf", 30))
-        tile_mountain.append(Tile("Bf", 31))
-        tile_mountain.append(Tile("Bb", 32))
-        tile_mountain.append(Tile("Fc", 33))
-        tile_mountain.append(Tile("Hz", 34))
+        tile_mountain.append(Tile("Df", 27))
+        tile_mountain.append(Tile("Nf", 28))
+        tile_mountain.append(Tile("Xf", 29))
+        tile_mountain.append(Tile("Bf", 30))
+        tile_mountain.append(Tile("Bb", 31))
+        tile_mountain.append(Tile("Fc", 32))
+        tile_mountain.append(Tile("Hz", 33))
     return tile_mountain
