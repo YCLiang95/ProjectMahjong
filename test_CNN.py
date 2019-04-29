@@ -47,4 +47,4 @@ def test_mutate():
                     t.filter[i, j, k] += np.random.uniform(low=-1.0, high=1.0, size=1)
     print(time() - tt)
 
-test_mutate()
+test_evaluate()

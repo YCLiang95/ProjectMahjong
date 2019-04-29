@@ -5,6 +5,7 @@ import time
 import os
 import sys
 import MahjongGame
+import numpy as np
 
 from multiprocessing import Process, Manager
 sys.path.append('MahjongCalculator')
@@ -17,59 +18,49 @@ def train(networks, start, end, arr_fitness, games):
             tracker = MahjongGame.GameTracker()
             tracker.tile_mountain = games[Rounds].copy()
             tracker.initial_draw()
+            current_player = -1
 
-            hand_table = [0 for i in range(34)]
-            for i in range(13):
-                hand.append(mountain.pop())
-                hand_table[hand[i].order - 1] += 1
-                river.append(mountain.pop())
-                river.append(mountain.pop())
-                river.append(mountain.pop())
-            while len(mountain) > 10:
-                hand.append(mountain.pop())
-                hand_table[hand[13].order - 1] += 1
+            ron = False
+            while tracker.has_next() and not ron:
+                current_player = 0
+                if current_player == 4:
+                    current_player = 0
+
+                tracker.draw(current_player)
+
                 # if check_wining(hand):
-                score = check_wining(hand)
+                score = tracker.check_win(current_player)
                 if score >= 1000:
                     arr_fitness[Network] += score
-                    ron = True
                     break
-                for i in range(34):
-                    networks[Network].layers[0][i].value = hand_table[i]
+
+                networks[Network].inputLayer = np.asarray(tracker.output_array[current_player], dtype=np.float32)
                 networks[Network].evaluate()
-                min_v = 2
-                k = 0
+
+                m = 0
+                index = -1
                 for i in range(34):
-                    if hand_table[i] > 0 and networks[Network].layers[3][i].value < min_v:
-                        min_v = networks[Network].layers[3][i].value
-                        k = i
-                hand_table[k] -= 1
-                for i in range(len(hand)):
-                    if hand[i].order == k + 1:
-                        river.append(hand.pop(i))
-                        break
-                for i in range(3):
-                    hand.append(mountain.pop())
-                    hand_table[hand[13].order - 1] += 1
-                    # if check_wining(hand):
-                    score = check_wining(hand)
+                    if tracker.player_hand[current_player][i][0] == 1 and (networks[Network].outputLayer[i] < m or index == -1):
+                        m = networks[Network].outputLayer[i]
+                        index = i
+                tracker.discard(current_player, index)
+                for i in range(1, 3):
+                    tile = tracker.draw(i)
+                    tracker.discard(i, tile.order)
+                    score = tracker.check_win(current_player, check_ron=True)
                     if score >= 1000:
                         arr_fitness[Network] += score
                         ron = True
                         break
-                    hand_table[hand[13].order - 1] -= 1
-                    river.append(hand.pop(13))
-                if ron:
-                    break
             if not ron:
-                arr_fitness[Network] += check_wining(hand)
-        # print("Network:" + str(Network) + "  Fitness:" + str(round(arr_fitness[Network], 2)))
+                arr_fitness[Network] += tracker.check_win(current_player)
+        print("Network:" + str(Network) + "  Fitness:" + str(round(arr_fitness[Network], 2)))
 
 
 def test():
     networks = []
     networks_count = 960
-    threads_count = 4
+    threads_count = 1
     cut_off = 80
     test_per_thread = 10
     game_count = 10
@@ -77,10 +68,11 @@ def test():
     pre_generation = 0
     for i in range(networks_count):
         nn = NeuralNetwork.NeuralNetwork()
-        nn.add_convolutional_layer(shape=(2, 34, 4))
-        nn.add_convolutional_layer(shape=(2, 32, 3))
-        nn.add_convolutional_layer(shape=(2, 30, 2))
-        nn.add_multilayer_perceptron()
+        nn.add_convolutional_layer(shape=(6, 34, 4))
+        nn.add_convolutional_layer(shape=(6, 32, 3))
+        nn.add_convolutional_layer(shape=(6, 30, 2))
+        nn.add_flatten_layer()
+        nn.add_multilayer_perceptron(shape=(360, 255, 128, 34))
         networks.append(nn)
     if not os.path.exists("NeuroNet"):
         os.makedirs("NeuroNet")
