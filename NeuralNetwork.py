@@ -4,8 +4,10 @@ import NeuralNetworkGPU
 
 def uniform_crossover(father, mother):
     result = []
-    result.append(father)
-    result.append(mother)
+    child_1 = father
+    child_2 = mother
+    result.append(child_1)
+    result.append(child_2)
     return result
 
 

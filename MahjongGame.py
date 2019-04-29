@@ -38,18 +38,46 @@ def check_wining(hand):
         return 0
         # return round(1 / (result + 2) * 1000, 2)
 
-class Game:
+
+class GameTracker:
 
     def __init__(self):
-        self.player_hand = [[], [], [], []]
+        self.player_hand = [([[0, 0, 0, 0]] * 34)] * 4
+        self.tile_river = [([[0, 0, 0, 0]] * 34)] * 4
         self.tile_mountain = []
-        self.tile_river = [[], [], [], []]
+        self.bounce = [[0, 0, 0, 0]] * 34
+        self.output_array = [[], [], [], []]
+        for i in range(4):
+            self.output_array[i] = [[], [], [], [], [], []]
+            self.output_array[i][0] = self.player_hand[i]
+            for j in range(4):
+                self.output_array[i][j + 1] = self.tile_river[i]
+            self.output_array[i][5] = self.bounce
+
+    def initial_draw(self):
+        for i in range(13):
+            for j in range(4):
+                self.draw(j)
+
+    def get_output(self, player):
+        pass
 
     def draw(self, player):
-        pass
+        tile = self.tile_mountain.pop()
+        for i in range(4):
+            if self.player_hand[player][tile.order][i] == 0:
+                self.player_hand[player][tile.order][i] = 1
+                break
 
     def discard(self, player, tile):
-        pass
+        for i in range(4):
+            if self.player_hand[player][tile.order][3 - i] == 1:
+                self.player_hand[player][tile.order][3 - i] = 0
+                break
+        for i in range(4):
+            if self.tile_river[player][tile.order][i] == 0:
+                self.tile_river[player][tile.order][i] = 1
+                break
 
     def can_chi(self):
         pass
@@ -58,4 +86,7 @@ class Game:
         pass
 
     def can_kan(self):
+        pass
+
+    def check_win(self):
         pass
