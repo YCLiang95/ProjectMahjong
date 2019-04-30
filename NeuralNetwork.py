@@ -1,6 +1,7 @@
 import ConvolutionalNeuralNetwork
 import NeuralNetworkGPU
 import FlattenLayer
+import pickle
 import numpy as np
 
 
@@ -50,6 +51,9 @@ class NeuralNetwork:
 
     def save(self, filename):
         # use np savez
+        with open(filename, 'wb') as file:
+            pickle.dump(self.layers, file, pickle.HIGHEST_PROTOCOL)
 
     def load(self, filename):
-        pass
+        with open(filename, 'rb') as file:
+            self.layers = pickle.load(file)

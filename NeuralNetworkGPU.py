@@ -34,7 +34,6 @@ def relu_layer(matrix, vector, result, m, n):
 
 
 class MLP:
-    mutation_rate = 0.2
 
     def __init__(self, layers=(34, 255, 255, 34)):
         self.fitness = 0
@@ -43,6 +42,7 @@ class MLP:
         self.inputLayer = np.zeros(layers[0], dtype=np.float32)
         self.outputLayer = np.zeros(layers[len(layers) - 1], dtype=np.float32)
         self.connection = []
+        self.mutation_rate = 0.2
         for i in range(len(layers) - 1):
             a = np.array(np.random.uniform(low=-1.0, high=1.0, size=(layers[i], layers[i + 1])), dtype=np.float32)
             self.connection.append(a)
@@ -53,7 +53,7 @@ class MLP:
     def mutate(self):
         for i in range(len(self.connection)):
             for j in range(len(self.connection[i])):
-                if random.random() * 100 < self.mutation_rate:
+                if random.random() < self.mutation_rate:
                     self.connection[i][j] += random.random() * 4 - 2
 
     def evaluate(self):

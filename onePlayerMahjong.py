@@ -119,7 +119,7 @@ def test():
                 networks[i].fitness = network_fitness[i]
             networks.sort(reverse=True)
 
-            if Generations % 10 == 0 and Generations > 0:
+            if (pre_generation + Generations) % 10 == 0 and Generations > 0:
                 threads = []
                 for i in range(threads_count):
                     threads.append(Process(target=train, args=(networks, i * test_per_thread,
@@ -132,9 +132,9 @@ def test():
                 for i in range(threads_count * test_per_thread):
                     average += network_fitness[i]
                 average = average / (threads_count * test_per_thread)
-                print("Generation " + str(Generations) + " Validation Average fitness: " + str(round(average, 2)))
+                print("Generation " + str(pre_generation + Generations) + " Validation Average fitness: " + str(round(average, 2)))
                 with open("NeuroNet/" + str(pre_generation + Generations) + "/validation.txt", 'w+') as file:
-                    file.write("Generation " + str(Generations) + " Validation Average fitness: " + str(round(average, 2)) + '\n')
+                    file.write("Generation " + str(pre_generation + Generations) + " Validation Average fitness: " + str(round(average, 2)) + '\n')
 
         average = 0
         average_ten = 0
@@ -150,7 +150,8 @@ def test():
                 average_ten += round(networks[i].fitness, 2)
             elif i <= networks_count / 2:
                 average_fifty += round(networks[i].fitness, 2)
-            networks[i].save("NeuroNet/" + str(pre_generation + Generations) + "/"+str(i) + ".txt")
+            if i < networks_count / 10:
+                networks[i].save("NeuroNet/" + str(pre_generation + Generations) + "/"+str(i) + ".pkl")
             # print("Network:" + str(i) + "  Fitness:" + str(round(networks[i].fitness, 2)))
         average = round(average / networks_count, 2)
         average_fifty = (average_one + average_ten + average_fifty) / (networks_count / 2)
@@ -184,6 +185,8 @@ def test():
             new_networks += NeuralNetwork.uniform_crossover(networks[i], networks[j])
         new_networks[len(new_networks) - 1] = networks[0]
         networks = new_networks
+        for i in range(networks):
+            networks[i].mutate()
 
 
 if __name__ == '__main__':
