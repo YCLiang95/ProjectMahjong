@@ -49,7 +49,7 @@ class NeuralNetwork:
             layer.mutate()
 
     def save(self, filename):
-        pass
+        # use np savez
 
     def load(self, filename):
         pass

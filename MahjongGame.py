@@ -122,6 +122,7 @@ class GameTracker:
             else:
                 return result.cost['main'] + result.cost['additional']
         elif result == -2:
+            # print("Faild")
             return 0
         elif result == 0:
             return 100

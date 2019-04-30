@@ -54,14 +54,14 @@ def train(networks, start, end, arr_fitness, games):
                         break
             if not ron:
                 arr_fitness[Network] += tracker.check_win(current_player)
-        print("Network:" + str(Network) + "  Fitness:" + str(round(arr_fitness[Network], 2)))
+        # print("Network:" + str(Network) + "  Fitness:" + str(round(arr_fitness[Network], 2)))
 
 
 def test():
     networks = []
     networks_count = 960
-    threads_count = 1
-    cut_off = 80
+    threads_count = 6
+    cut_off = 160
     test_per_thread = 10
     game_count = 10
     generation_count = 500
@@ -98,7 +98,7 @@ def test():
         t = time.time()
         print("Generation:" + str(pre_generation + Generations))
 
-        if Generations >= 100:
+        if Generations > 0:
             games = []
             for i in range(game_count):
                 mountain = Mahjong.init()
@@ -119,7 +119,7 @@ def test():
                 networks[i].fitness = network_fitness[i]
             networks.sort(reverse=True)
 
-            if Generations % 10 == 0 and Generations >= 100:
+            if Generations % 10 == 0 and Generations > 0:
                 threads = []
                 for i in range(threads_count):
                     threads.append(Process(target=train, args=(networks, i * test_per_thread,
