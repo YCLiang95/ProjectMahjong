@@ -46,7 +46,7 @@ class NeuralNetwork:
         child_1 = NeuralNetwork()
         child_2 = NeuralNetwork()
         for i in range(len(self.layers)):
-            t = self.layers[i].uniform_crossover(network, self.crossover_rate)
+            t = self.layers[i].uniform_crossover(network.layers[i], self.crossover_rate)
             child_1.layers.append(t[0])
             child_2.layers.append(t[1])
         result.append(child_1)

@@ -10,6 +10,10 @@ class FlattenLayer:
     def evaluate(self):
         self.outputLayer = self.inputLayer.flatten()
 
+    def uniform_crossover(self, mate, rate):
+        result = [FlattenLayer(), FlattenLayer()]
+        return result
+
     def evaluate_cpu(self):
         self.evaluate()
 

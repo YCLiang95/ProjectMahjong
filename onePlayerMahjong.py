@@ -185,7 +185,7 @@ def test():
 
         for i in range(round(networks_count / 2)):
             j = random.randint(0, round(networks_count / 2))
-            new_networks += NeuralNetwork.uniform_crossover(networks[i], networks[j])
+            new_networks += networks[i].uniform_crossover(networks[j])
         new_networks[len(new_networks) - 1] = networks[0]
         networks = new_networks
         for i in range(len(networks) - 1):
