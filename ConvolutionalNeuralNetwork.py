@@ -1,6 +1,7 @@
 import numpy as np
 from numba import cuda
 from numba.cuda.random import create_xoroshiro128p_states, xoroshiro128p_uniform_float32, xoroshiro128p_normal_float32
+import random
 from timeit import default_timer as time
 import math
 
@@ -55,6 +56,20 @@ class ConvolutionalLayer:
         self.filter = np.array(np.random.uniform(low=-1.0, high=1.0, size=(height, filter_shape[0], filter_shape[1])), dtype=np.float32)
         self.mutation_rate = 0.2
         # self.rng_states = create_xoroshiro128p_states(self.height * self.filter_shape[0] * self.filter_shape[1], seed=1)
+
+    def uniform_crossover(self, mate, rate):
+        result = [ConvolutionalLayer(self.shape, self.filter_shape, self.height, self.activation),
+                  ConvolutionalLayer(self.shape, self.filter_shape, self.height, self.activation)]
+        for i in range(self.height):
+            for j in range(self.filter_shape[0]):
+                for k in range(self.filter_shape[1]):
+                    if random.random() > rate:
+                        result[0].filter[i][j][k] = self.filter[i][j][k]
+                        result[1].filter[i][j][k] = mate.filter[i][j][k]
+                    else:
+                        result[1].filter[i][j][k] = self.filter[i][j][k]
+                        result[0].filter[i][j][k] = mate.filter[i][j][k]
+        return result
 
     def mutate_gpu(self):
         dA = cuda.to_device(self.filter)

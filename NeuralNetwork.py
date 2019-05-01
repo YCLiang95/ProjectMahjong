@@ -5,18 +5,10 @@ import pickle
 import numpy as np
 
 
-def uniform_crossover(father, mother):
-    result = []
-    child_1 = father
-    child_2 = mother
-    result.append(child_1)
-    result.append(child_2)
-    return result
-
-
 class NeuralNetwork:
     fitness = 0
-    mutation_rate = 0.2
+    mutation_rate = 0.25
+    crossover_rate = 0.25
 
     def __init__(self):
         self.inputLayer = None
@@ -48,6 +40,18 @@ class NeuralNetwork:
     def mutate(self):
         for layer in self.layers:
             layer.mutate()
+
+    def uniform_crossover(self, network):
+        result = []
+        child_1 = NeuralNetwork()
+        child_2 = NeuralNetwork()
+        for i in range(len(self.layers)):
+            t = self.layers[i].uniform_crossover(network, self.crossover_rate)
+            child_1.layers.append(t[0])
+            child_2.layers.append(t[1])
+        result.append(child_1)
+        result.append(child_2)
+        return result
 
     def save(self, filename):
         # use np savez

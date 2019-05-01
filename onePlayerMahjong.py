@@ -7,6 +7,7 @@ import sys
 import MahjongGame
 import numpy as np
 
+
 from multiprocessing import Process, Manager
 sys.path.append('MahjongCalculator')
 
@@ -133,6 +134,8 @@ def test():
                     average += network_fitness[i]
                 average = average / (threads_count * test_per_thread)
                 print("Generation " + str(pre_generation + Generations) + " Validation Average fitness: " + str(round(average, 2)))
+                if not os.path.exists("NeuroNet/" + str(pre_generation + Generations)):
+                    os.makedirs("NeuroNet/" + str(pre_generation + Generations))
                 with open("NeuroNet/" + str(pre_generation + Generations) + "/validation.txt", 'w+') as file:
                     file.write("Generation " + str(pre_generation + Generations) + " Validation Average fitness: " + str(round(average, 2)) + '\n')
 
@@ -185,7 +188,7 @@ def test():
             new_networks += NeuralNetwork.uniform_crossover(networks[i], networks[j])
         new_networks[len(new_networks) - 1] = networks[0]
         networks = new_networks
-        for i in range(networks):
+        for i in range(len(networks) - 1):
             networks[i].mutate()
 
 
