@@ -1,6 +1,8 @@
 from MahjongCalculator.mahjong.shanten import Shanten
 from MahjongCalculator.mahjong.tile import TilesConverter
 from MahjongCalculator.mahjong.hand_calculating.hand import HandCalculator
+from mahjong.hand_calculating.hand_config import HandConfig
+from mahjong.meld import Meld
 
 # win_table = MahjongWinTable.load_table("output.txt")
 win_table = []
@@ -42,7 +44,7 @@ class GameTracker:
         self.player_hand = [[[0 for i in range(4)] for j in range(34)] for k in range(4)]
         self.tile_river = [[[0 for i in range(4)] for j in range(34)] for k in range(4)]
         self.open_set = [[[0 for i in range(4)] for j in range(34)] for k in range(4)]
-        self.closed_kan = [[[0 for i in range(4)] for j in range(34)] for k in range(4)]
+        self.melds = [[], [], [], []]
         self.tile_mountain = []
         self.bounce = [[0 for i in range(4)] for j in range(34)]
         self.last_discard = None
@@ -51,11 +53,13 @@ class GameTracker:
 
         self.output_array = [[], [], [], []]
         for i in range(4):
-            self.output_array[i] = [[], [], [], [], [], []]
+            self.output_array[i] = [[], [], [], [], [], [], [], [], [], []]
             self.output_array[i][0] = self.player_hand[i]
             for j in range(4):
                 self.output_array[i][j + 1] = self.tile_river[i]
-            self.output_array[i][5] = self.bounce
+            for j in range(4):
+                self.output_array[i][j + 5] = self.open_set[i]
+            self.output_array[i][9] = self.bounce
 
     def initial_draw(self):
         for i in range(13):
@@ -96,7 +100,7 @@ class GameTracker:
         self.last_discard = tile
         self.last_discard_player = player
 
-    def can_chi(self):
+    def can_chi(self, player, tile):
         pass
 
     def check_number_of_tile(self, player, tile):
@@ -113,24 +117,46 @@ class GameTracker:
             if self.tile_river[self.last_discard_player][tile][i] == 1:
                 self.tile_river[self.last_discard_player][tile][i] = 0
                 break
+        tiles = [0 for i in range(34)]
+        tiles[tile] = 3
+        self.melds[player].append(Meld(meld_type=Meld.PON, tiles=tiles))
 
     def kan(self, player, tile):
         for i in range(4):
             self.player_hand[player][tile][i] = 0
             self.open_set[player][tile][i] = 1
         self.tile_river[self.last_discard_player][tile][0] = 0
+        tiles = [0 for i in range(34)]
+        tiles[tile] = 4
+        self.melds[player].append(Meld(meld_type=Meld.KAN, tiles=tiles))
 
     def close_kan(self, player, tile):
-        pass
+        for i in range(4):
+            self.player_hand[player][tile][i] = 0
+            self.open_set[player][tile][i] = 1
+        tiles = [0 for i in range(34)]
+        tiles[tile] = 4
+        self.melds[player].append(Meld(meld_type=Meld.KAN, tiles=tiles))
 
     def check_win(self, player, check_ron=False):
         tiles = [0 for i in range(34)]
         for i in range(34):
             for j in range(4):
                 tiles[i] += self.player_hand[player][i][j]
+                if j != 3:
+                    tiles[i] += self.open_set[player][i][j]
+        open_sets = []
+        for i in range(len(self.melds[player])):
+            t = []
+            for j in range(34):
+                for k in range(self.melds[player][i].tiles[j]):
+                    t.append(j)
+            open_sets.append(t)
+
         if check_ron:
             tiles[self.last_discard] += 1
-        result = shanten.calculate_shanten(tiles)
+
+        result = shanten.calculate_shanten(tiles, open_sets)
         if result == -1:
             win_tile = [0 for i in range(34)]
             if check_ron:
@@ -139,13 +165,20 @@ class GameTracker:
                 win_tile[self.last_draw] = 1
             a = TilesConverter.to_136_array(tiles)
             b = TilesConverter.to_136_array(win_tile)[0]
-            result = calculator.estimate_hand_value(a, b)
+
+            if check_ron:
+                result = calculator.estimate_hand_value(a, b, melds=self.melds[player])
+            else:
+                result = calculator.estimate_hand_value(a, b,  melds=self.melds[player], config=HandConfig(is_tsumo=True))
+
             if result.cost is None:
                 return 100
             else:
                 return result.cost['main'] + result.cost['additional']
         elif result == -2:
-            # print("Faild")
+            print("Faild shanten")
+            print(tiles)
+            print(open_sets)
             return 0
         elif result == 0:
             return 100

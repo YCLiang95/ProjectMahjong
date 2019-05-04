@@ -11,14 +11,23 @@ import numpy as np
 from multiprocessing import Process, Manager
 sys.path.append('MahjongCalculator')
 
+tile_table = Mahjong.tile_table()
 
 def train(networks, start, end, arr_fitness, games):
     for Network in range(start, end):
         arr_fitness[Network] = 0
         for Rounds in range(len(games)):
+            log = ""
             tracker = MahjongGame.GameTracker()
             tracker.tile_mountain = games[Rounds].copy()
             tracker.initial_draw()
+            for i in range(4):
+                log += "player " + str(i) + " initial hands "
+                for j in range(34):
+                    for k in range(4):
+                        if (tracker.player_hand[i][j][k]) == 1:
+                            log += tile_table[j] + " "
+                log += '\n'
             current_player = -1
 
             ron = False
@@ -27,12 +36,26 @@ def train(networks, start, end, arr_fitness, games):
                 if current_player == 4:
                     current_player = 0
 
-                tracker.draw(current_player)
+                tile = tracker.draw(current_player)
+                log += "Player " + str(current_player) + " draw " + tile_table[tile.order] + "\n"
+                if tracker.check_number_of_tile(current_player, tile.order) == 4:
+                    tracker.close_kan(current_player, tile.order)
+                    log += "Player " + str(current_player) + " close Kan " + tile_table[tile.order] + "\n"
+                    tile = tracker.draw(current_player)
+                    log += "Player " + str(current_player) + " draw " + tile_table[tile.order] + "\n"
 
                 # if check_wining(hand):
                 score = tracker.check_win(current_player)
                 if score >= 1000:
                     arr_fitness[Network] += score
+                    log += "Player " + str(current_player) + " won " + str(score) + "\n"
+                    log += "player " + str(current_player) + " Wining hands "
+                    for j in range(34):
+                        for k in range(4):
+                            if (tracker.player_hand[current_player][j][k]) == 1:
+                                log += tile_table[j] + " "
+                    log += '\n'
+                    print(log)
                     break
 
                 networks[Network].inputLayer = np.asarray(tracker.output_array[current_player], dtype=np.float32)
@@ -45,14 +68,35 @@ def train(networks, start, end, arr_fitness, games):
                         m = networks[Network].outputLayer[i]
                         index = i
                 tracker.discard(current_player, index)
-                for i in range(1, 3):
+                log += "Player " + str(current_player) + " discard " + tile_table[index] + "\n"
+                for i in range(1, 4):
                     tile = tracker.draw(i)
+                    log += "Player " + str(i) + " draw " + tile_table[tile.order] + "\n"
                     tracker.discard(i, tile.order)
+                    log += "Player " + str(i) + " discard " + tile_table[tile.order] + "\n"
                     score = tracker.check_win(current_player, check_ron=True)
                     if score >= 1000:
                         arr_fitness[Network] += score
                         ron = True
+                        log += "Player " + str(current_player) + " won " + str(score) + "\n"
+                        log += "player " + str(current_player) + " Wining hands "
+                        for j in range(34):
+                            for k in range(4):
+                                if (tracker.player_hand[current_player][j][k]) == 1:
+                                    log += tile_table[j] + " "
+                        log += '\n'
+                        print(log)
                         break
+                    if networks[Network].outputLayer[tile.order] > 0:
+                        t = tracker.check_number_of_tile(0, tile.order)
+                        if t == 4:
+                            tracker.kan(0, tile.order)
+                            log += "Player " + str(current_player) + "Kan " + tile_table[tile.order] + "\n"
+                            break
+                        elif t == 3:
+                            tracker.pon(0, tile.order)
+                            log += "Player " + str(current_player) + "Pon " + tile_table[tile.order] + "\n"
+                            break
             if not ron:
                 arr_fitness[Network] += tracker.check_win(current_player)
         # print("Network:" + str(Network) + "  Fitness:" + str(round(arr_fitness[Network], 2)))
@@ -69,7 +113,7 @@ def test():
     pre_generation = 0
     for i in range(networks_count):
         nn = NeuralNetwork.NeuralNetwork()
-        nn.add_convolutional_layer(shape=(6, 34, 4), filter_shape=(5, 2), height=32)
+        nn.add_convolutional_layer(shape=(10, 34, 4), filter_shape=(5, 2), height=32)
         nn.add_convolutional_layer(shape=(32, 30, 3), filter_shape=(5, 2), height=32)
         nn.add_convolutional_layer(shape=(32, 26, 2), filter_shape=(5, 2), height=32)
         nn.add_flatten_layer()

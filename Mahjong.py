@@ -1,5 +1,5 @@
 def tile_table():
-    result = [" "]
+    result = []
     for i in range(1, 10):
         result.append(str(i) + "M")
     for i in range(1, 10):
