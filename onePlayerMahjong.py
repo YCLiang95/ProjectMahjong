@@ -88,11 +88,12 @@ def test():
 
     validation_games = []
     games = []
+    mountain = Mahjong.init()
     for i in range(game_count):
-        mountain = Mahjong.init()
+        random.shuffle(mountain)
+        games.append(mountain.copy())
         random.shuffle(mountain)
         validation_games.append(mountain.copy())
-        games.append(mountain.copy())
 
     # do 300 test run
     for Generations in range(generation_count):

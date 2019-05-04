@@ -46,6 +46,7 @@ class GameTracker:
         self.tile_mountain = []
         self.bounce = [[0 for i in range(4)] for j in range(34)]
         self.last_discard = None
+        self.last_discard_player = None
         self.last_draw = None
 
         self.output_array = [[], [], [], []]
@@ -93,6 +94,7 @@ class GameTracker:
         if not discard:
             print("Faild to discard")
         self.last_discard = tile
+        self.last_discard_player = player
 
     def can_chi(self):
         pass
@@ -104,10 +106,19 @@ class GameTracker:
         return result
 
     def pon(self, player, tile):
-        pass
+        for i in range(3):
+            self.player_hand[player][tile][i] = 0
+            self.open_set[player][tile][i] = 1
+        for i in range(2):
+            if self.tile_river[self.last_discard_player][tile][i] == 1:
+                self.tile_river[self.last_discard_player][tile][i] = 0
+                break
 
     def kan(self, player, tile):
-        pass
+        for i in range(4):
+            self.player_hand[player][tile][i] = 0
+            self.open_set[player][tile][i] = 1
+        self.tile_river[self.last_discard_player][tile][0] = 0
 
     def close_kan(self, player, tile):
         pass
