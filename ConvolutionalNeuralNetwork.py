@@ -20,14 +20,14 @@ def apply_filter(input, filter, output):
                 # output[x, y, i, j] = 1
 
 
-@cuda.jit('void(f4[:,:,:,:], f4[:,:,:], int32)')
-def sum_up(input, output, input_height):
+@cuda.jit('void(f4[:,:,:,:], f4[:,:,:], f4[:], int32)')
+def sum_up(input, output, bias, input_height):
     x = cuda.blockIdx.x
     i = cuda.threadIdx.x
     j = cuda.threadIdx.y
     for a in range(input_height):
         output[x, i, j] += input[a, x, i, j]
-    output[x, i, j] = max(0, output[x, i, j])
+    output[x, i, j] = max(0, output[x, i, j] + bias[x])
 
 
 @cuda.jit
@@ -54,6 +54,7 @@ class ConvolutionalLayer:
         self.inputLayer = np.zeros(shape=shape, dtype=np.float32)
         self.outputLayer = np.zeros(shape=(height, shape[1] - filter_shape[0] + 1, shape[2] - filter_shape[1] + 1), dtype=np.float32)
         self.filter = np.array(np.random.uniform(low=-1.0, high=1.0, size=(height, filter_shape[0], filter_shape[1])), dtype=np.float32)
+        self.bias = np.array(np.random.uniform(low=-3.0, high=3.0, size=height), dtype=np.float32)
         self.mutation_rate = 0.2
         # self.rng_states = create_xoroshiro128p_states(self.height * self.filter_shape[0] * self.filter_shape[1], seed=1)
 
@@ -69,6 +70,12 @@ class ConvolutionalLayer:
                     else:
                         result[1].filter[i][j][k] = self.filter[i][j][k]
                         result[0].filter[i][j][k] = mate.filter[i][j][k]
+            if random.random() > rate:
+                result[0].bias[i] = self.bias[i]
+                result[1].bias[i] = mate.bias[i]
+            else:
+                result[1].bias[i] = self.bias[i]
+                result[0].bias[i] = mate.bias[i]
         return result
 
     def mutate_gpu(self):
@@ -80,9 +87,10 @@ class ConvolutionalLayer:
         for i in range(self.height):
             for j in range(self.filter_shape[0]):
                 for k in range(self.filter_shape[1]):
-                    q = np.random.uniform(low=0.0, high=1.0, size=1)
-                    if q < self.mutation_rate:
-                        self.filter[i, j, k] += np.random.uniform(low=-1.0, high=1.0, size=1)
+                    if random.random() < self.mutation_rate:
+                        self.filter[i, j, k] += random.random() * 4 - 2
+            if random.random() < self.mutation_rate:
+                self.bias[i] += random.random() * 4 - 2
 
     def evaluate(self):
         temp = np.zeros(shape=(self.shape[0], self.height, self.shape[1] - self.filter_shape[0] + 1,
@@ -93,9 +101,10 @@ class ConvolutionalLayer:
         dB = cuda.to_device(self.filter)
         dC = cuda.to_device(temp)
         dD = cuda.to_device(self.outputLayer)
+        dE = cuda.to_device(self.bias)
         apply_filter[(self.shape[0], self.height), (self.shape[1], self.shape[2])](dA, dB, dC)
         sum_up[self.height, (self.shape[1] - self.filter_shape[0] + 1,
-                             self.shape[2] - self.filter_shape[1] + 1)](dC, dD, self.shape[0])
+                             self.shape[2] - self.filter_shape[1] + 1)](dC, dD, dE, self.shape[0])
         dD.to_host()
 
     def evaluate_cpu(self):
@@ -112,4 +121,4 @@ class ConvolutionalLayer:
             for j in range(len(self.outputLayer[0])):
                 for k in range(len(self.outputLayer[0][0])):
                     if self.activation == "Relu":
-                        self.outputLayer[i][j][k] = max(0, self.outputLayer[i][j][k])
+                        self.outputLayer[i][j][k] = max(0, self.outputLayer[i][j][k] + self.bias[i])

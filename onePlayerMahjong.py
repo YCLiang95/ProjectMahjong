@@ -60,20 +60,20 @@ def train(networks, start, end, arr_fitness, games):
 
 def test():
     networks = []
-    networks_count = 960
+    networks_count = 96
     threads_count = 6
-    cut_off = 160
+    cut_off = 16
     test_per_thread = 10
     game_count = 10
     generation_count = 500
     pre_generation = 0
     for i in range(networks_count):
         nn = NeuralNetwork.NeuralNetwork()
-        nn.add_convolutional_layer(shape=(6, 34, 4))
-        nn.add_convolutional_layer(shape=(6, 32, 3))
-        nn.add_convolutional_layer(shape=(6, 30, 2))
+        nn.add_convolutional_layer(shape=(6, 34, 4), filter_shape=(5, 2), height=32)
+        nn.add_convolutional_layer(shape=(32, 30, 3), filter_shape=(5, 2), height=32)
+        nn.add_convolutional_layer(shape=(32, 26, 2), filter_shape=(5, 2), height=32)
         nn.add_flatten_layer()
-        nn.add_multilayer_perceptron(shape=(360, 255, 128, 34))
+        nn.add_multilayer_perceptron(shape=(704, 256, 128, 34))
         networks.append(nn)
     if not os.path.exists("NeuroNet"):
         os.makedirs("NeuroNet")
@@ -120,8 +120,9 @@ def test():
                 networks[i].fitness = network_fitness[i]
             networks.sort(reverse=True)
 
-            if (pre_generation + Generations) % 10 == 0 and Generations > 0:
+            if (pre_generation + Generations) % 10 == 0:
                 threads = []
+                network_fitness = manager.list(range(threads_count * test_per_thread))
                 for i in range(threads_count):
                     threads.append(Process(target=train, args=(networks, i * test_per_thread,
                                                                i * test_per_thread + test_per_thread,
@@ -130,14 +131,20 @@ def test():
                 for i in threads:
                     i.join()
                 average = 0
+                validation_max = 0
                 for i in range(threads_count * test_per_thread):
+                    if network_fitness[i] > validation_max:
+                        validation_max = network_fitness[i]
                     average += network_fitness[i]
                 average = average / (threads_count * test_per_thread)
                 print("Generation " + str(pre_generation + Generations) + " Validation Average fitness: " + str(round(average, 2)))
+                print("Generation " + str(pre_generation + Generations) + " Validation Best: " + str(round(validation_max, 2)))
                 if not os.path.exists("NeuroNet/" + str(pre_generation + Generations)):
                     os.makedirs("NeuroNet/" + str(pre_generation + Generations))
                 with open("NeuroNet/" + str(pre_generation + Generations) + "/validation.txt", 'w+') as file:
                     file.write("Generation " + str(pre_generation + Generations) + " Validation Average fitness: " + str(round(average, 2)) + '\n')
+                    for i in range(threads_count * test_per_thread):
+                        file.write("Network: " + str(i) + " " + str(round(network_fitness[i], 2)) + '\n')
 
         average = 0
         average_ten = 0

@@ -41,11 +41,14 @@ class GameTracker:
     def __init__(self):
         self.player_hand = [[[0 for i in range(4)] for j in range(34)] for k in range(4)]
         self.tile_river = [[[0 for i in range(4)] for j in range(34)] for k in range(4)]
+        self.open_set = [[[0 for i in range(4)] for j in range(34)] for k in range(4)]
+        self.closed_kan = [[[0 for i in range(4)] for j in range(34)] for k in range(4)]
         self.tile_mountain = []
         self.bounce = [[0 for i in range(4)] for j in range(34)]
-        self.output_array = [[], [], [], []]
         self.last_discard = None
         self.last_draw = None
+
+        self.output_array = [[], [], [], []]
         for i in range(4):
             self.output_array[i] = [[], [], [], [], [], []]
             self.output_array[i][0] = self.player_hand[i]
@@ -94,10 +97,19 @@ class GameTracker:
     def can_chi(self):
         pass
 
-    def can_pon(self):
+    def check_number_of_tile(self, player, tile):
+        result = 0
+        for i in range(4):
+            result += self.player_hand[player][tile][i]
+        return result
+
+    def pon(self, player, tile):
         pass
 
-    def can_kan(self):
+    def kan(self, player, tile):
+        pass
+
+    def close_kan(self, player, tile):
         pass
 
     def check_win(self, player, check_ron=False):

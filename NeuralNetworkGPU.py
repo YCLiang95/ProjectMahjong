@@ -66,7 +66,7 @@ class MLP:
             for j in range(len(self.bias[i])):
                 if random.random() < self.mutation_rate:
                     self.bias[i][j] += random.random() * 4 - 2
-            self.bias[i].clip(-1.0, 1.0, out=self.bias[i])
+            # self.bias[i].clip(-1.0, 1.0, out=self.bias[i])
 
     def uniform_crossover(self, mate, rate):
         result = [MLP(self.layers), MLP(self.layers)]
