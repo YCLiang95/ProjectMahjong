@@ -13,6 +13,7 @@ sys.path.append('MahjongCalculator')
 
 tile_table = Mahjong.tile_table()
 
+
 def train(networks, start, end, arr_fitness, games):
     for Network in range(start, end):
         arr_fitness[Network] = 0
@@ -55,7 +56,7 @@ def train(networks, start, end, arr_fitness, games):
                             if (tracker.player_hand[current_player][j][k]) == 1:
                                 log += tile_table[j] + " "
                     log += '\n'
-                    print(log)
+                    # print(log)
                     break
 
                 networks[Network].inputLayer = np.asarray(tracker.output_array[current_player], dtype=np.float32)
@@ -85,7 +86,7 @@ def train(networks, start, end, arr_fitness, games):
                                 if (tracker.player_hand[current_player][j][k]) == 1:
                                     log += tile_table[j] + " "
                         log += '\n'
-                        print(log)
+                        # print(log)
                         break
                     if networks[Network].outputLayer[tile.order] > 0:
                         t = tracker.check_number_of_tile(0, tile.order)

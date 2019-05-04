@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/onePlayerMahjong.py" line="112" />
+    <bookmark url="file://$PROJECT_DIR$/onePlayerMahjong.py" line="113" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9446633-5efd-4b05-8a2a-0f5b2c423c53" name="Default Changelist" comment="initial commit">
-      <change beforePath="$PROJECT_DIR$/Mahjong.py" beforeDir="false" afterPath="$PROJECT_DIR$/Mahjong.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MahjongGame.py" beforeDir="false" afterPath="$PROJECT_DIR$/MahjongGame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/onePlayerMahjong.py" beforeDir="false" afterPath="$PROJECT_DIR$/onePlayerMahjong.py" afterDir="false" />
     </list>
@@ -65,8 +64,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/onePlayerMahjong.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="71" column="35" selection-start-line="71" selection-start-column="35" selection-end-line="71" selection-end-column="35" />
+            <state relative-caret-position="315">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -77,8 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MahjongGame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="4" column="29" lean-forward="true" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+            <state relative-caret-position="-336">
+              <caret line="104" column="16" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="16" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
               </folding>
@@ -152,8 +151,8 @@
         <option value="$PROJECT_DIR$/test_CNN.py" />
         <option value="$PROJECT_DIR$/Unit_Test/test_CNN.py" />
         <option value="$PROJECT_DIR$/ConvolutionalNeuralNetwork.py" />
-        <option value="$PROJECT_DIR$/MahjongGame.py" />
         <option value="$PROJECT_DIR$/Mahjong.py" />
+        <option value="$PROJECT_DIR$/MahjongGame.py" />
         <option value="$PROJECT_DIR$/onePlayerMahjong.py" />
       </list>
     </option>
@@ -377,8 +376,8 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49736565" visible="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49736565" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
@@ -690,13 +689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MahjongCalculator/mahjong/meld.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="21" column="18" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Mahjong.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
@@ -704,10 +696,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/MahjongCalculator/mahjong/meld.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="21" column="18" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MahjongGame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="29" lean-forward="true" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+        <state relative-caret-position="-336">
+          <caret line="104" column="16" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="16" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
           </folding>
@@ -716,8 +715,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/onePlayerMahjong.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="71" column="35" selection-start-line="71" selection-start-column="35" selection-end-line="71" selection-end-column="35" />
+        <state relative-caret-position="315">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>

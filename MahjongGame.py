@@ -56,9 +56,9 @@ class GameTracker:
             self.output_array[i] = [[], [], [], [], [], [], [], [], [], []]
             self.output_array[i][0] = self.player_hand[i]
             for j in range(4):
-                self.output_array[i][j + 1] = self.tile_river[i]
+                self.output_array[i][j + 1] = self.tile_river[j]
             for j in range(4):
-                self.output_array[i][j + 5] = self.open_set[i]
+                self.output_array[i][j + 5] = self.open_set[j]
             self.output_array[i][9] = self.bounce
 
     def initial_draw(self):
@@ -101,7 +101,10 @@ class GameTracker:
         self.last_discard_player = player
 
     def can_chi(self, player, tile):
-        pass
+        if tile.order < 27:
+            pass
+        else:
+            return False
 
     def check_number_of_tile(self, player, tile):
         result = 0
