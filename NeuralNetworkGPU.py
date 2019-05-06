@@ -61,11 +61,19 @@ class MLP:
             for j in range(len(self.connection[i])):
                 if random.random() < self.mutation_rate:
                     self.connection[i][j] += random.random() * 4 - 2
-            self.connection[i].clip(-3.0, 3.0, out=self.connection[i])
+                    if self.connection[i][j] > 3:
+                        self.connection[i][j] = 3
+                    elif self.connection[i][j] < -3:
+                        self.connection[i][j] = -3
+            # self.connection[i].clip(-3.0, 3.0, out=self.connection[i])
         for i in range(1, len(self.bias)):
             for j in range(len(self.bias[i])):
                 if random.random() < self.mutation_rate:
                     self.bias[i][j] += random.random() * 4 - 2
+                    if self.bias[i][j] > 3:
+                        self.bias[i][j] = 3
+                    elif self.bias[i][j] < -3:
+                        self.bias[i][j] = -3
             # self.bias[i].clip(-1.0, 1.0, out=self.bias[i])
 
     def uniform_crossover(self, mate, rate):

@@ -105,13 +105,13 @@ def train(networks, start, end, arr_fitness, games):
 
 def test():
     networks = []
-    networks_count = 96
+    networks_count = 960
     threads_count = 6
-    cut_off = 16
-    test_per_thread = 10
+    cut_off = 160
+    test_per_thread = 20
     game_count = 10
     generation_count = 500
-    pre_generation = 0
+    pre_generation = 1
     for i in range(networks_count):
         nn = NeuralNetwork.NeuralNetwork()
         nn.add_convolutional_layer(shape=(10, 34, 4), filter_shape=(5, 2), height=32)
@@ -145,12 +145,9 @@ def test():
         t = time.time()
         print("Generation:" + str(pre_generation + Generations))
 
-        if Generations > 0:
-            games = []
-            for i in range(game_count):
-                mountain = Mahjong.init()
-                random.shuffle(mountain)
-                games.append(mountain.copy())
+        mountain = Mahjong.init()
+        random.shuffle(mountain)
+        games[Generations % 10] = mountain.copy()
 
         with Manager() as manager:
             network_fitness = manager.list(range(networks_count))
@@ -206,8 +203,8 @@ def test():
                 average_ten += round(networks[i].fitness, 2)
             elif i <= networks_count / 2:
                 average_fifty += round(networks[i].fitness, 2)
-            if i < networks_count / 10:
-                networks[i].save("NeuroNet/" + str(pre_generation + Generations) + "/"+str(i) + ".pkl")
+            if Generations % 10 == 0 or i < networks_count / 10:
+                networks[i].save("NeuroNet/" + str(pre_generation + Generations) + "/" + str(i) + ".pkl")
             # print("Network:" + str(i) + "  Fitness:" + str(round(networks[i].fitness, 2)))
         average = round(average / networks_count, 2)
         average_fifty = (average_one + average_ten + average_fifty) / (networks_count / 2)
@@ -236,13 +233,15 @@ def test():
         networks[round(networks_count / 2) - 2] = networks[round(networks_count / 2) - 2 + i + j]
         networks[round(networks_count / 2) - 1] = networks[round(networks_count / 2) - 1 + i + j + k]
 
-        for i in range(round(networks_count / 2)):
-            j = random.randint(0, round(networks_count / 2))
-            new_networks += networks[i].uniform_crossover(networks[j])
+        for i in range(networks_count // 4):
+            new_networks += networks[i].uniform_crossover(networks[i + (networks_count // 4)])
+            new_networks += networks[i].uniform_crossover(networks[i + (networks_count // 4)])
         new_networks[len(new_networks) - 1] = networks[0]
         networks = new_networks
         for i in range(len(networks) - 1):
             networks[i].mutate()
+        if Generations == 0:
+            print(len(networks))
 
 
 if __name__ == '__main__':

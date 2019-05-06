@@ -88,9 +88,17 @@ class ConvolutionalLayer:
             for j in range(self.filter_shape[0]):
                 for k in range(self.filter_shape[1]):
                     if random.random() < self.mutation_rate:
-                        self.filter[i, j, k] += random.random() * 4 - 2
+                        self.filter[i][j][k] += random.random() * 4 - 2
+                        if self.filter[i][j][k] > 3:
+                            self.filter[i][j][k] = 3
+                        elif self.filter[i][j][k] < -3:
+                            self.filter[i][j][k] = -3
             if random.random() < self.mutation_rate:
                 self.bias[i] += random.random() * 4 - 2
+                if self.bias[i] > 3:
+                    self.bias[i] = 3
+                elif self.bias[i] < -3:
+                    self.bias[i] = -3
 
     def evaluate(self):
         temp = np.zeros(shape=(self.shape[0], self.height, self.shape[1] - self.filter_shape[0] + 1,
