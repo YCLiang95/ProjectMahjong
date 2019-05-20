@@ -1,0 +1,200 @@
+Generation:100
+Average Fitness: 0.9 Time eclipsed:116.4s
+Generation:101
+Average Fitness: 0.36 Time eclipsed:109.2s
+Generation:102
+Average Fitness: 0.24 Time eclipsed:108.5s
+Generation:103
+Average Fitness: 0.36 Time eclipsed:112.6s
+Generation:104
+Average Fitness: 0.46 Time eclipsed:114.9s
+Generation:105
+Average Fitness: 0.37 Time eclipsed:107.4s
+Generation:106
+Average Fitness: 0.43 Time eclipsed:105.2s
+Generation:107
+Average Fitness: 1.02 Time eclipsed:108.1s
+Generation:108
+Average Fitness: 0.23 Time eclipsed:121.2s
+Generation:109
+Average Fitness: 0.4 Time eclipsed:112.9s
+Generation:110
+Average Fitness: 0.12 Time eclipsed:110.3s
+Generation:111
+Average Fitness: 0.23 Time eclipsed:112.1s
+Generation:112
+Average Fitness: 0.33 Time eclipsed:110.4s
+Generation:113
+Average Fitness: 0.39 Time eclipsed:113.1s
+Generation:114
+Average Fitness: 0.17 Time eclipsed:112.8s
+Generation:115
+Average Fitness: 0.31 Time eclipsed:122.1s
+Generation:116
+Average Fitness: 0.21 Time eclipsed:120.4s
+Generation:117
+Average Fitness: 0.42 Time eclipsed:124.8s
+Generation:118
+Average Fitness: 0.5 Time eclipsed:122.8s
+Generation:119
+Average Fitness: 0.4 Time eclipsed:116.1s
+Generation:120
+Average Fitness: 0.39 Time eclipsed:111.4s
+Generation:121
+Average Fitness: 1.06 Time eclipsed:112.0s
+Generation:122
+Average Fitness: 0.3 Time eclipsed:124.3s
+Generation:123
+Average Fitness: 0.38 Time eclipsed:114.6s
+Generation:124
+Average Fitness: 1.14 Time eclipsed:110.4s
+Generation:125
+Average Fitness: 0.27 Time eclipsed:114.5s
+Generation:126
+Average Fitness: 0.29 Time eclipsed:114.5s
+Generation:127
+Average Fitness: 0.5 Time eclipsed:117.2s
+Generation:128
+Average Fitness: 0.26 Time eclipsed:117.6s
+Generation:129
+Average Fitness: 0.23 Time eclipsed:119.7s
+Generation:130
+Average Fitness: 0.14 Time eclipsed:117.2s
+Generation:131
+Average Fitness: 0.29 Time eclipsed:119.7s
+Generation:132
+Average Fitness: 0.43 Time eclipsed:121.9s
+Generation:133
+Average Fitness: 0.26 Time eclipsed:117.1s
+Generation:134
+Average Fitness: 0.25 Time eclipsed:117.2s
+Generation:135
+Average Fitness: 0.63 Time eclipsed:118.4s
+Generation:136
+Average Fitness: 0.22 Time eclipsed:119.9s
+Generation:137
+Average Fitness: 0.71 Time eclipsed:116.8s
+Generation:138
+Average Fitness: 0.69 Time eclipsed:113.1s
+Generation:139
+Average Fitness: 0.36 Time eclipsed:114.8s
+Generation:140
+Average Fitness: 0.64 Time eclipsed:115.6s
+Generation:141
+Average Fitness: 0.33 Time eclipsed:115.2s
+Generation:142
+Average Fitness: 0.56 Time eclipsed:117.2s
+Generation:143
+Average Fitness: 1.04 Time eclipsed:115.1s
+Generation:144
+Average Fitness: 0.33 Time eclipsed:112.9s
+Generation:145
+Average Fitness: 0.26 Time eclipsed:115.1s
+Generation:146
+Average Fitness: 0.65 Time eclipsed:112.4s
+Generation:147
+Average Fitness: 0.81 Time eclipsed:113.4s
+Generation:148
+Average Fitness: 1.0 Time eclipsed:115.3s
+Generation:149
+Average Fitness: 0.55 Time eclipsed:119.4s
+Generation:150
+Average Fitness: 0.26 Time eclipsed:116.6s
+Generation:151
+Average Fitness: 0.4 Time eclipsed:113.1s
+Generation:152
+Average Fitness: 0.48 Time eclipsed:120.5s
+Generation:153
+Average Fitness: 0.43 Time eclipsed:113.0s
+Generation:154
+Average Fitness: 0.8 Time eclipsed:116.4s
+Generation:155
+Average Fitness: 0.37 Time eclipsed:120.0s
+Generation:156
+Average Fitness: 0.32 Time eclipsed:116.8s
+Generation:157
+Average Fitness: 0.61 Time eclipsed:116.7s
+Generation:158
+Average Fitness: 0.68 Time eclipsed:117.8s
+Generation:159
+Average Fitness: 0.7 Time eclipsed:117.9s
+Generation:160
+Average Fitness: 0.56 Time eclipsed:122.0s
+Generation:161
+Average Fitness: 0.99 Time eclipsed:121.7s
+Generation:162
+Average Fitness: 1.12 Time eclipsed:125.8s
+Generation:163
+Average Fitness: 0.51 Time eclipsed:118.5s
+Generation:164
+Average Fitness: 0.74 Time eclipsed:122.7s
+Generation:165
+Average Fitness: 0.47 Time eclipsed:120.0s
+Generation:166
+Average Fitness: 0.4 Time eclipsed:124.8s
+Generation:167
+Average Fitness: 0.62 Time eclipsed:144.4s
+Generation:168
+Average Fitness: 0.65 Time eclipsed:147.4s
+Generation:169
+Average Fitness: 0.45 Time eclipsed:128.7s
+Generation:170
+Average Fitness: 0.28 Time eclipsed:131.4s
+Generation:171
+Average Fitness: 0.67 Time eclipsed:121.5s
+Generation:172
+Average Fitness: 0.48 Time eclipsed:124.3s
+Generation:173
+Average Fitness: 0.4 Time eclipsed:132.7s
+Generation:174
+Average Fitness: 0.39 Time eclipsed:135.0s
+Generation:175
+Average Fitness: 0.12 Time eclipsed:118.3s
+Generation:176
+Average Fitness: 0.48 Time eclipsed:122.3s
+Generation:177
+Average Fitness: 0.93 Time eclipsed:125.6s
+Generation:178
+Average Fitness: 1.69 Time eclipsed:123.4s
+Generation:179
+Average Fitness: 0.22 Time eclipsed:127.4s
+Generation:180
+Average Fitness: 0.31 Time eclipsed:123.1s
+Generation:181
+Average Fitness: 0.63 Time eclipsed:123.6s
+Generation:182
+Average Fitness: 0.62 Time eclipsed:130.2s
+Generation:183
+Average Fitness: 1.2 Time eclipsed:127.0s
+Generation:184
+Average Fitness: 0.74 Time eclipsed:121.0s
+Generation:185
+Average Fitness: 0.64 Time eclipsed:122.2s
+Generation:186
+Average Fitness: 0.28 Time eclipsed:123.2s
+Generation:187
+Average Fitness: 0.24 Time eclipsed:126.4s
+Generation:188
+Average Fitness: 0.49 Time eclipsed:126.8s
+Generation:189
+Average Fitness: 0.81 Time eclipsed:124.9s
+Generation:190
+Average Fitness: 0.6 Time eclipsed:125.1s
+Generation:191
+Average Fitness: 1.03 Time eclipsed:122.1s
+Generation:192
+Average Fitness: 0.36 Time eclipsed:128.1s
+Generation:193
+Average Fitness: 0.56 Time eclipsed:135.9s
+Generation:194
+Average Fitness: 0.96 Time eclipsed:119.8s
+Generation:195
+Average Fitness: 0.69 Time eclipsed:123.5s
+Generation:196
+Average Fitness: 0.26 Time eclipsed:120.9s
+Generation:197
+Average Fitness: 0.74 Time eclipsed:120.8s
+Generation:198
+Average Fitness: 0.5 Time eclipsed:122.2s
+Generation:199
+Average Fitness: 0.73 Time eclipsed:123.0s

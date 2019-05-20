@@ -59,12 +59,13 @@ class MLP:
     def mutate(self):
         for i in range(len(self.connection)):
             for j in range(len(self.connection[i])):
-                if random.random() < self.mutation_rate:
-                    self.connection[i][j] += random.random() * 4 - 2
-                    if self.connection[i][j] > 3:
-                        self.connection[i][j] = 3
-                    elif self.connection[i][j] < -3:
-                        self.connection[i][j] = -3
+                for k in range(len(self.connection[i][j])):
+                    if random.random() < self.mutation_rate:
+                        self.connection[i][j][k] += random.random() * 4 - 2
+                        if self.connection[i][j][k] > 3:
+                            self.connection[i][j][k] = 3
+                        elif self.connection[i][j][k] < -3:
+                            self.connection[i][j][k] = -3
             # self.connection[i].clip(-3.0, 3.0, out=self.connection[i])
         for i in range(1, len(self.bias)):
             for j in range(len(self.bias[i])):

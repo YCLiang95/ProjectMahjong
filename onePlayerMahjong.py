@@ -111,7 +111,7 @@ def test():
     test_per_thread = 20
     game_count = 10
     generation_count = 500
-    pre_generation = 1
+    pre_generation = 0
     for i in range(networks_count):
         nn = NeuralNetwork.NeuralNetwork()
         nn.add_convolutional_layer(shape=(10, 34, 4), filter_shape=(5, 2), height=32)
@@ -240,8 +240,6 @@ def test():
         networks = new_networks
         for i in range(len(networks) - 1):
             networks[i].mutate()
-        if Generations == 0:
-            print(len(networks))
 
 
 if __name__ == '__main__':

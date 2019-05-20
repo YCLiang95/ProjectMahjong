@@ -1,0 +1,1372 @@
+E:\ProgramFiles\Anaconda3\envs\ENV1\python.exe E:/Workstation/ProjectMahjong/onePlayerMahjong.py
+0 Networks loaded
+Generation:0
+Generation 0 Validation Average fitness: 155.13
+Generation 0 Validation Best: 8022
+Average Fitness: 70.33 Time eclipsed:520.2s
+One Percentile: 4400.21
+Ten Percentile: 575.93
+Fifty Percentile: 132.26
+Generation:1
+Average Fitness: 74.5 Time eclipsed:487.9s
+One Percentile: 3685.21
+Ten Percentile: 607.66
+Fifty Percentile: 139.82
+Generation:2
+Average Fitness: 130.16 Time eclipsed:484.9s
+One Percentile: 7250.52
+Ten Percentile: 1151.12
+Fifty Percentile: 250.37
+Generation:3
+Average Fitness: 90.95 Time eclipsed:476.6s
+One Percentile: 5041.15
+Ten Percentile: 757.06
+Fifty Percentile: 171.48
+Generation:4
+Average Fitness: 143.09 Time eclipsed:475.8s
+One Percentile: 6746.25
+Ten Percentile: 1254.76
+Fifty Percentile: 273.92
+Generation:5
+Average Fitness: 124.16 Time eclipsed:488.9s
+One Percentile: 4666.77
+Ten Percentile: 1036.97
+Fifty Percentile: 233.43
+Generation:6
+Average Fitness: 149.73 Time eclipsed:500.6s
+One Percentile: 7066.77
+Ten Percentile: 1310.89
+Fifty Percentile: 286.24
+Generation:7
+Average Fitness: 138.24 Time eclipsed:480.7s
+One Percentile: 6331.67
+Ten Percentile: 1181.12
+Fifty Percentile: 261.51
+Generation:8
+Average Fitness: 59.6 Time eclipsed:472.6s
+One Percentile: 1854.58
+Ten Percentile: 431.45
+Fifty Percentile: 107.8
+Generation:9
+Average Fitness: 57.69 Time eclipsed:472.6s
+One Percentile: 2525.52
+Ten Percentile: 417.51
+Fifty Percentile: 104.08
+Generation:10
+Generation 10 Validation Average fitness: 64.1
+Generation 10 Validation Best: 1614
+Average Fitness: 53.08 Time eclipsed:532.4s
+One Percentile: 2464.9
+Ten Percentile: 402.08
+Fifty Percentile: 97.82
+Generation:11
+Average Fitness: 71.36 Time eclipsed:486.6s
+One Percentile: 2376.15
+Ten Percentile: 567.17
+Fifty Percentile: 133.1
+Generation:12
+Average Fitness: 73.85 Time eclipsed:478.3s
+One Percentile: 2775.21
+Ten Percentile: 598.94
+Fifty Percentile: 138.23
+Generation:13
+Average Fitness: 78.08 Time eclipsed:465.2s
+One Percentile: 2700.0
+Ten Percentile: 642.7
+Fifty Percentile: 146.9
+Generation:14
+Average Fitness: 71.49 Time eclipsed:463.3s
+One Percentile: 3752.71
+Ten Percentile: 584.27
+Fifty Percentile: 134.17
+Generation:15
+Average Fitness: 35.78 Time eclipsed:476.5s
+One Percentile: 2007.71
+Ten Percentile: 251.92
+Fifty Percentile: 64.88
+Generation:16
+Average Fitness: 39.29 Time eclipsed:471.3s
+One Percentile: 2676.35
+Ten Percentile: 303.41
+Fifty Percentile: 73.55
+Generation:17
+Average Fitness: 83.29 Time eclipsed:467.4s
+One Percentile: 4689.79
+Ten Percentile: 731.21
+Fifty Percentile: 160.35
+Generation:18
+Average Fitness: 94.64 Time eclipsed:478.9s
+One Percentile: 4925.21
+Ten Percentile: 810.11
+Fifty Percentile: 180.14
+Generation:19
+Average Fitness: 111.05 Time eclipsed:474.6s
+One Percentile: 6520.21
+Ten Percentile: 962.02
+Fifty Percentile: 211.96
+Generation:20
+Generation 20 Validation Average fitness: 73.27
+Generation 20 Validation Best: 3322
+Average Fitness: 165.23 Time eclipsed:520.3s
+One Percentile: 8862.4
+Ten Percentile: 1494.8
+Fifty Percentile: 319.81
+Generation:21
+Average Fitness: 74.19 Time eclipsed:490.6s
+One Percentile: 5339.9
+Ten Percentile: 611.5
+Fifty Percentile: 139.64
+Generation:22
+Average Fitness: 75.07 Time eclipsed:480.3s
+One Percentile: 4743.65
+Ten Percentile: 610.48
+Fifty Percentile: 140.6
+Generation:23
+Average Fitness: 106.66 Time eclipsed:468.7s
+One Percentile: 6491.56
+Ten Percentile: 931.56
+Fifty Percentile: 204.05
+Generation:24
+Average Fitness: 92.33 Time eclipsed:476.0s
+One Percentile: 6021.35
+Ten Percentile: 799.5
+Fifty Percentile: 176.44
+Generation:25
+Average Fitness: 97.78 Time eclipsed:469.4s
+One Percentile: 6983.23
+Ten Percentile: 847.93
+Fifty Percentile: 187.25
+Generation:26
+Average Fitness: 132.15 Time eclipsed:470.7s
+One Percentile: 6850.31
+Ten Percentile: 1179.12
+Fifty Percentile: 254.87
+Generation:27
+Average Fitness: 61.14 Time eclipsed:488.5s
+One Percentile: 2754.48
+Ten Percentile: 487.11
+Fifty Percentile: 113.96
+Generation:28
+Average Fitness: 24.97 Time eclipsed:484.9s
+One Percentile: 1222.6
+Ten Percentile: 160.41
+Fifty Percentile: 44.97
+Generation:29
+Average Fitness: 20.49 Time eclipsed:470.2s
+One Percentile: 1000.42
+Ten Percentile: 130.86
+Fifty Percentile: 37.46
+Generation:30
+Generation 30 Validation Average fitness: 151.28
+Generation 30 Validation Best: 3223
+Average Fitness: 24.96 Time eclipsed:517.3s
+One Percentile: 1497.81
+Ten Percentile: 179.22
+Fifty Percentile: 46.57
+Generation:31
+Average Fitness: 29.77 Time eclipsed:469.7s
+One Percentile: 1802.81
+Ten Percentile: 220.08
+Fifty Percentile: 55.35
+Generation:32
+Average Fitness: 39.96 Time eclipsed:473.6s
+One Percentile: 2832.81
+Ten Percentile: 322.28
+Fifty Percentile: 76.13
+Generation:33
+Average Fitness: 45.64 Time eclipsed:477.5s
+One Percentile: 2863.85
+Ten Percentile: 362.22
+Fifty Percentile: 85.62
+Generation:34
+Average Fitness: 42.35 Time eclipsed:472.6s
+One Percentile: 2544.58
+Ten Percentile: 317.73
+Fifty Percentile: 77.84
+Generation:35
+Average Fitness: 33.27 Time eclipsed:469.3s
+One Percentile: 1799.69
+Ten Percentile: 226.2
+Fifty Percentile: 59.63
+Generation:36
+Average Fitness: 51.1 Time eclipsed:472.4s
+One Percentile: 2755.1
+Ten Percentile: 392.9
+Fifty Percentile: 94.18
+Generation:37
+Average Fitness: 35.54 Time eclipsed:470.5s
+One Percentile: 1745.62
+Ten Percentile: 235.55
+Fifty Percentile: 63.41
+Generation:38
+Average Fitness: 26.3 Time eclipsed:471.7s
+One Percentile: 792.19
+Ten Percentile: 137.32
+Fifty Percentile: 44.05
+Generation:39
+Average Fitness: 52.72 Time eclipsed:474.4s
+One Percentile: 3264.58
+Ten Percentile: 396.71
+Fifty Percentile: 96.86
+Generation:40
+Generation 40 Validation Average fitness: 24.4
+Generation 40 Validation Best: 143
+Average Fitness: 72.62 Time eclipsed:513.6s
+One Percentile: 2871.77
+Ten Percentile: 562.8
+Fifty Percentile: 133.99
+Generation:41
+Average Fitness: 71.49 Time eclipsed:482.1s
+One Percentile: 3346.35
+Ten Percentile: 569.57
+Fifty Percentile: 132.78
+Generation:42
+Average Fitness: 90.8 Time eclipsed:471.8s
+One Percentile: 5659.27
+Ten Percentile: 771.77
+Fifty Percentile: 172.61
+Generation:43
+Average Fitness: 69.35 Time eclipsed:473.3s
+One Percentile: 3763.23
+Ten Percentile: 570.41
+Fifty Percentile: 130.71
+Generation:44
+Average Fitness: 80.8 Time eclipsed:470.2s
+One Percentile: 4771.25
+Ten Percentile: 690.11
+Fifty Percentile: 154.41
+Generation:45
+Average Fitness: 112.97 Time eclipsed:466.4s
+One Percentile: 5785.31
+Ten Percentile: 995.74
+Fifty Percentile: 217.54
+Generation:46
+Average Fitness: 125.58 Time eclipsed:472.2s
+One Percentile: 5659.79
+Ten Percentile: 1118.89
+Fifty Percentile: 242.53
+Generation:47
+Average Fitness: 94.26 Time eclipsed:471.6s
+One Percentile: 4958.96
+Ten Percentile: 807.61
+Fifty Percentile: 179.51
+Generation:48
+Average Fitness: 174.64 Time eclipsed:467.5s
+One Percentile: 6724.58
+Ten Percentile: 1564.45
+Fifty Percentile: 337.61
+Generation:49
+Average Fitness: 175.91 Time eclipsed:472.9s
+One Percentile: 7091.56
+Ten Percentile: 1538.19
+Fifty Percentile: 336.98
+Generation:50
+Generation 50 Validation Average fitness: 50.0
+Generation 50 Validation Best: 1617
+Average Fitness: 137.08 Time eclipsed:526.2s
+One Percentile: 7259.58
+Ten Percentile: 1192.91
+Fifty Percentile: 262.86
+Generation:51
+Average Fitness: 346.09 Time eclipsed:469.7s
+One Percentile: 26613.44
+Ten Percentile: 3244.93
+Fifty Percentile: 678.16
+Generation:52
+Average Fitness: 270.08 Time eclipsed:472.9s
+One Percentile: 18156.56
+Ten Percentile: 2465.46
+Fifty Percentile: 524.94
+Generation:53
+Average Fitness: 391.91 Time eclipsed:470.9s
+One Percentile: 26077.08
+Ten Percentile: 3655.25
+Fifty Percentile: 766.41
+Generation:54
+Average Fitness: 338.86 Time eclipsed:471.1s
+One Percentile: 19967.19
+Ten Percentile: 3122.8
+Fifty Percentile: 661.34
+Generation:55
+Average Fitness: 520.62 Time eclipsed:473.3s
+One Percentile: 25653.44
+Ten Percentile: 4839.64
+Fifty Percentile: 1019.9
+Generation:56
+Average Fitness: 450.11 Time eclipsed:473.2s
+One Percentile: 17816.25
+Ten Percentile: 4112.15
+Fifty Percentile: 877.95
+Generation:57
+Average Fitness: 562.89 Time eclipsed:470.3s
+One Percentile: 22248.54
+Ten Percentile: 5117.09
+Fifty Percentile: 1102.59
+Generation:58
+Average Fitness: 460.03 Time eclipsed:485.8s
+One Percentile: 25011.67
+Ten Percentile: 4267.5
+Fifty Percentile: 900.13
+Generation:59
+Average Fitness: 287.26 Time eclipsed:499.6s
+One Percentile: 17198.54
+Ten Percentile: 2623.83
+Fifty Percentile: 557.25
+Generation:60
+Generation 60 Validation Average fitness: 102.15
+Generation 60 Validation Best: 3203
+Average Fitness: 469.82 Time eclipsed:529.5s
+One Percentile: 30956.56
+Ten Percentile: 4448.23
+Fifty Percentile: 922.9
+Generation:61
+Average Fitness: 303.95 Time eclipsed:512.0s
+One Percentile: 16995.94
+Ten Percentile: 2787.85
+Fifty Percentile: 590.73
+Generation:62
+Average Fitness: 331.61 Time eclipsed:488.6s
+One Percentile: 14342.81
+Ten Percentile: 3051.66
+Fifty Percentile: 645.98
+Generation:63
+Average Fitness: 316.31 Time eclipsed:479.9s
+One Percentile: 14225.42
+Ten Percentile: 2890.01
+Fifty Percentile: 615.98
+Generation:64
+Average Fitness: 328.18 Time eclipsed:488.1s
+One Percentile: 19346.46
+Ten Percentile: 3054.29
+Fifty Percentile: 640.8
+Generation:65
+Average Fitness: 103.98 Time eclipsed:489.2s
+One Percentile: 4510.0
+Ten Percentile: 880.54
+Fifty Percentile: 197.88
+Generation:66
+Average Fitness: 101.75 Time eclipsed:478.8s
+One Percentile: 4338.33
+Ten Percentile: 849.89
+Fifty Percentile: 192.67
+Generation:67
+Average Fitness: 277.28 Time eclipsed:488.5s
+One Percentile: 6822.4
+Ten Percentile: 2531.34
+Fifty Percentile: 538.9
+Generation:68
+Average Fitness: 267.8 Time eclipsed:490.6s
+One Percentile: 7591.35
+Ten Percentile: 2418.42
+Fifty Percentile: 520.24
+Generation:69
+Average Fitness: 261.73 Time eclipsed:472.2s
+One Percentile: 6779.69
+Ten Percentile: 2351.75
+Fifty Percentile: 507.73
+Generation:70
+Generation 70 Validation Average fitness: 82.8
+Generation 70 Validation Best: 3244
+Average Fitness: 326.37 Time eclipsed:514.9s
+One Percentile: 8277.19
+Ten Percentile: 2959.82
+Fifty Percentile: 635.54
+Generation:71
+Average Fitness: 261.48 Time eclipsed:487.2s
+One Percentile: 7523.33
+Ten Percentile: 2384.28
+Fifty Percentile: 508.33
+Generation:72
+Average Fitness: 335.52 Time eclipsed:478.9s
+One Percentile: 8174.9
+Ten Percentile: 3088.95
+Fifty Percentile: 655.86
+Generation:73
+Average Fitness: 325.77 Time eclipsed:483.8s
+One Percentile: 6540.94
+Ten Percentile: 2954.32
+Fifty Percentile: 634.65
+Generation:74
+Average Fitness: 378.83 Time eclipsed:490.9s
+One Percentile: 7555.31
+Ten Percentile: 3447.28
+Fifty Percentile: 739.79
+Generation:75
+Average Fitness: 384.41 Time eclipsed:489.0s
+One Percentile: 7538.54
+Ten Percentile: 3516.28
+Fifty Percentile: 749.91
+Generation:76
+Average Fitness: 414.46 Time eclipsed:495.9s
+One Percentile: 9532.4
+Ten Percentile: 3753.17
+Fifty Percentile: 809.71
+Generation:77
+Average Fitness: 46.53 Time eclipsed:500.1s
+One Percentile: 1955.62
+Ten Percentile: 287.77
+Fifty Percentile: 81.28
+Generation:78
+Average Fitness: 45.54 Time eclipsed:484.6s
+One Percentile: 2240.83
+Ten Percentile: 296.95
+Fifty Percentile: 80.75
+Generation:79
+Average Fitness: 59.57 Time eclipsed:495.7s
+One Percentile: 3004.38
+Ten Percentile: 437.06
+Fifty Percentile: 109.1
+Generation:80
+Generation 80 Validation Average fitness: 103.48
+Generation 80 Validation Best: 4126
+Average Fitness: 67.11 Time eclipsed:533.1s
+One Percentile: 3768.12
+Ten Percentile: 497.99
+Fifty Percentile: 123.19
+Generation:81
+Average Fitness: 92.72 Time eclipsed:487.0s
+One Percentile: 4892.71
+Ten Percentile: 693.02
+Fifty Percentile: 169.8
+Generation:82
+Average Fitness: 83.98 Time eclipsed:491.8s
+One Percentile: 5028.12
+Ten Percentile: 624.29
+Fifty Percentile: 152.97
+Generation:83
+Average Fitness: 86.99 Time eclipsed:492.2s
+One Percentile: 5114.48
+Ten Percentile: 667.78
+Fifty Percentile: 159.59
+Generation:84
+Average Fitness: 104.41 Time eclipsed:490.8s
+One Percentile: 6181.15
+Ten Percentile: 825.57
+Fifty Percentile: 194.21
+Generation:85
+Average Fitness: 90.86 Time eclipsed:485.9s
+One Percentile: 5383.96
+Ten Percentile: 729.42
+Fifty Percentile: 169.5
+Generation:86
+Average Fitness: 120.04 Time eclipsed:478.8s
+One Percentile: 6349.06
+Ten Percentile: 976.34
+Fifty Percentile: 226.27
+Generation:87
+Average Fitness: 118.57 Time eclipsed:474.2s
+One Percentile: 6729.27
+Ten Percentile: 938.04
+Fifty Percentile: 223.78
+Generation:88
+Average Fitness: 143.13 Time eclipsed:486.3s
+One Percentile: 7528.23
+Ten Percentile: 1164.43
+Fifty Percentile: 270.31
+Generation:89
+Average Fitness: 160.91 Time eclipsed:484.0s
+One Percentile: 8031.77
+Ten Percentile: 1339.59
+Fifty Percentile: 306.49
+Generation:90
+Generation 90 Validation Average fitness: 97.97
+Generation 90 Validation Best: 3236
+Average Fitness: 261.3 Time eclipsed:526.7s
+One Percentile: 10050.42
+Ten Percentile: 2343.73
+Fifty Percentile: 508.0
+Generation:91
+Average Fitness: 45.15 Time eclipsed:485.1s
+One Percentile: 2098.85
+Ten Percentile: 291.67
+Fifty Percentile: 79.56
+Generation:92
+Average Fitness: 46.21 Time eclipsed:483.3s
+One Percentile: 1996.15
+Ten Percentile: 284.26
+Fifty Percentile: 80.1
+Generation:93
+Average Fitness: 64.5 Time eclipsed:474.7s
+One Percentile: 3273.75
+Ten Percentile: 462.7
+Fifty Percentile: 116.28
+Generation:94
+Average Fitness: 74.91 Time eclipsed:489.1s
+One Percentile: 3718.02
+Ten Percentile: 536.89
+Fifty Percentile: 134.66
+Generation:95
+Average Fitness: 113.11 Time eclipsed:486.7s
+One Percentile: 4825.52
+Ten Percentile: 889.75
+Fifty Percentile: 209.88
+Generation:96
+Average Fitness: 112.71 Time eclipsed:474.4s
+One Percentile: 5205.94
+Ten Percentile: 916.91
+Fifty Percentile: 210.25
+Generation:97
+Average Fitness: 200.99 Time eclipsed:490.5s
+One Percentile: 6271.88
+Ten Percentile: 1728.71
+Fifty Percentile: 382.46
+Generation:98
+Average Fitness: 150.46 Time eclipsed:494.8s
+One Percentile: 6375.31
+Ten Percentile: 1266.8
+Fifty Percentile: 283.88
+Generation:99
+Average Fitness: 176.11 Time eclipsed:474.5s
+One Percentile: 6266.88
+Ten Percentile: 1480.61
+Fifty Percentile: 333.01
+Generation:100
+Generation 100 Validation Average fitness: 552.62
+Generation 100 Validation Best: 7836
+Average Fitness: 199.48 Time eclipsed:529.5s
+One Percentile: 6608.85
+Ten Percentile: 1702.59
+Fifty Percentile: 379.11
+Generation:101
+Average Fitness: 266.98 Time eclipsed:512.9s
+One Percentile: 8051.15
+Ten Percentile: 2382.43
+Fifty Percentile: 515.04
+Generation:102
+Average Fitness: 226.48 Time eclipsed:483.7s
+One Percentile: 7235.94
+Ten Percentile: 1984.7
+Fifty Percentile: 434.84
+Generation:103
+Average Fitness: 277.67 Time eclipsed:485.2s
+One Percentile: 8067.71
+Ten Percentile: 2456.41
+Fifty Percentile: 534.68
+Generation:104
+Average Fitness: 241.16 Time eclipsed:505.3s
+One Percentile: 8039.48
+Ten Percentile: 2124.34
+Fifty Percentile: 464.26
+Generation:105
+Average Fitness: 148.04 Time eclipsed:491.3s
+One Percentile: 6006.46
+Ten Percentile: 1220.41
+Fifty Percentile: 277.71
+Generation:106
+Average Fitness: 235.73 Time eclipsed:498.1s
+One Percentile: 7487.08
+Ten Percentile: 2047.85
+Fifty Percentile: 451.38
+Generation:107
+Average Fitness: 146.65 Time eclipsed:501.5s
+One Percentile: 3991.15
+Ten Percentile: 1215.88
+Fifty Percentile: 276.52
+Generation:108
+Average Fitness: 214.2 Time eclipsed:488.3s
+One Percentile: 5126.35
+Ten Percentile: 1869.22
+Fifty Percentile: 411.16
+Generation:109
+Average Fitness: 190.42 Time eclipsed:506.1s
+One Percentile: 5910.1
+Ten Percentile: 1687.96
+Fifty Percentile: 366.64
+Generation:110
+Generation 110 Validation Average fitness: 340.62
+Generation 110 Validation Best: 3245
+Average Fitness: 150.31 Time eclipsed:551.0s
+One Percentile: 3755.94
+Ten Percentile: 1290.27
+Fifty Percentile: 285.44
+Generation:111
+Average Fitness: 172.75 Time eclipsed:495.3s
+One Percentile: 4980.0
+Ten Percentile: 1509.26
+Fifty Percentile: 330.15
+Generation:112
+Average Fitness: 230.89 Time eclipsed:486.7s
+One Percentile: 5412.08
+Ten Percentile: 2080.99
+Fifty Percentile: 446.77
+Generation:113
+Average Fitness: 198.26 Time eclipsed:509.1s
+One Percentile: 4723.75
+Ten Percentile: 1764.74
+Fifty Percentile: 383.26
+Generation:114
+Average Fitness: 204.29 Time eclipsed:522.6s
+One Percentile: 5168.75
+Ten Percentile: 1793.01
+Fifty Percentile: 392.77
+Generation:115
+Average Fitness: 251.16 Time eclipsed:494.2s
+One Percentile: 6324.06
+Ten Percentile: 2285.53
+Fifty Percentile: 487.88
+Generation:116
+Average Fitness: 260.44 Time eclipsed:508.5s
+One Percentile: 6283.02
+Ten Percentile: 2353.7
+Fifty Percentile: 505.93
+Generation:117
+Average Fitness: 164.67 Time eclipsed:508.3s
+One Percentile: 5753.85
+Ten Percentile: 1411.16
+Fifty Percentile: 312.69
+Generation:118
+Average Fitness: 177.26 Time eclipsed:500.8s
+One Percentile: 5309.58
+Ten Percentile: 1465.61
+Fifty Percentile: 333.39
+Generation:119
+Average Fitness: 269.84 Time eclipsed:525.0s
+One Percentile: 9231.67
+Ten Percentile: 2358.36
+Fifty Percentile: 517.18
+Generation:120
+Generation 120 Validation Average fitness: 261.78
+Generation 120 Validation Best: 3952
+Average Fitness: 247.16 Time eclipsed:567.5s
+One Percentile: 7886.46
+Ten Percentile: 2162.81
+Fifty Percentile: 473.5
+Generation:121
+Average Fitness: 257.95 Time eclipsed:495.9s
+One Percentile: 5744.48
+Ten Percentile: 2255.4
+Fifty Percentile: 495.27
+Generation:122
+Average Fitness: 166.64 Time eclipsed:492.3s
+One Percentile: 5888.54
+Ten Percentile: 1360.09
+Fifty Percentile: 311.32
+Generation:123
+Average Fitness: 248.68 Time eclipsed:496.5s
+One Percentile: 6860.62
+Ten Percentile: 2119.54
+Fifty Percentile: 474.12
+Generation:124
+Average Fitness: 279.3 Time eclipsed:477.0s
+One Percentile: 7649.38
+Ten Percentile: 2405.72
+Fifty Percentile: 534.46
+Generation:125
+Average Fitness: 243.56 Time eclipsed:493.8s
+One Percentile: 4873.96
+Ten Percentile: 2079.0
+Fifty Percentile: 463.68
+Generation:126
+Average Fitness: 167.35 Time eclipsed:533.7s
+One Percentile: 4563.65
+Ten Percentile: 1360.94
+Fifty Percentile: 311.83
+Generation:127
+Average Fitness: 142.0 Time eclipsed:498.0s
+One Percentile: 4074.58
+Ten Percentile: 1166.94
+Fifty Percentile: 265.21
+Generation:128
+Average Fitness: 172.41 Time eclipsed:486.2s
+One Percentile: 4125.94
+Ten Percentile: 1435.83
+Fifty Percentile: 325.3
+Generation:129
+Average Fitness: 397.98 Time eclipsed:486.9s
+One Percentile: 7164.58
+Ten Percentile: 3406.96
+Fifty Percentile: 770.86
+Generation:130
+Generation 130 Validation Average fitness: 222.13
+Generation 130 Validation Best: 2636
+Average Fitness: 499.03 Time eclipsed:540.0s
+One Percentile: 7031.25
+Ten Percentile: 4164.44
+Fifty Percentile: 972.24
+Generation:131
+Average Fitness: 393.89 Time eclipsed:498.0s
+One Percentile: 8242.4
+Ten Percentile: 3246.55
+Fifty Percentile: 757.09
+Generation:132
+Average Fitness: 527.77 Time eclipsed:525.3s
+One Percentile: 7695.62
+Ten Percentile: 4178.26
+Fifty Percentile: 1023.65
+Generation:133
+Average Fitness: 502.95 Time eclipsed:485.8s
+One Percentile: 8464.06
+Ten Percentile: 4169.36
+Fifty Percentile: 976.57
+Generation:134
+Average Fitness: 503.94 Time eclipsed:471.0s
+One Percentile: 8441.88
+Ten Percentile: 4066.88
+Fifty Percentile: 978.32
+Generation:135
+Average Fitness: 452.15 Time eclipsed:487.4s
+One Percentile: 7445.31
+Ten Percentile: 3627.9
+Fifty Percentile: 874.75
+Generation:136
+Average Fitness: 408.01 Time eclipsed:489.4s
+One Percentile: 7754.58
+Ten Percentile: 3249.56
+Fifty Percentile: 787.41
+Generation:137
+Average Fitness: 470.65 Time eclipsed:479.9s
+One Percentile: 7771.35
+Ten Percentile: 3760.42
+Fifty Percentile: 912.46
+Generation:138
+Average Fitness: 563.18 Time eclipsed:511.6s
+One Percentile: 8273.65
+Ten Percentile: 4371.41
+Fifty Percentile: 1098.86
+Generation:139
+Average Fitness: 179.97 Time eclipsed:491.3s
+One Percentile: 5064.48
+Ten Percentile: 1444.22
+Fifty Percentile: 338.93
+Generation:140
+Generation 140 Validation Average fitness: 218.0
+Generation 140 Validation Best: 2063
+Average Fitness: 182.53 Time eclipsed:518.0s
+One Percentile: 4508.33
+Ten Percentile: 1408.83
+Fifty Percentile: 340.61
+Generation:141
+Average Fitness: 121.09 Time eclipsed:517.0s
+One Percentile: 2783.12
+Ten Percentile: 880.51
+Fifty Percentile: 222.18
+Generation:142
+Average Fitness: 149.5 Time eclipsed:474.9s
+One Percentile: 2833.65
+Ten Percentile: 1139.95
+Fifty Percentile: 278.23
+Generation:143
+Average Fitness: 110.78 Time eclipsed:500.9s
+One Percentile: 2399.48
+Ten Percentile: 775.34
+Fifty Percentile: 202.39
+Generation:144
+Average Fitness: 128.99 Time eclipsed:506.8s
+One Percentile: 2719.27
+Ten Percentile: 919.2
+Fifty Percentile: 237.05
+Generation:145
+Average Fitness: 105.76 Time eclipsed:492.8s
+One Percentile: 2644.48
+Ten Percentile: 757.81
+Fifty Percentile: 192.78
+Generation:146
+Average Fitness: 128.9 Time eclipsed:499.8s
+One Percentile: 3017.08
+Ten Percentile: 932.77
+Fifty Percentile: 237.55
+Generation:147
+Average Fitness: 118.04 Time eclipsed:502.3s
+One Percentile: 2422.71
+Ten Percentile: 786.15
+Fifty Percentile: 213.24
+Generation:148
+Average Fitness: 109.79 Time eclipsed:494.3s
+One Percentile: 2623.12
+Ten Percentile: 716.86
+Fifty Percentile: 198.19
+Generation:149
+Average Fitness: 120.42 Time eclipsed:494.4s
+One Percentile: 2732.5
+Ten Percentile: 831.43
+Fifty Percentile: 219.13
+Generation:150
+Generation 150 Validation Average fitness: 370.35
+Generation 150 Validation Best: 3935
+Average Fitness: 121.31 Time eclipsed:552.0s
+One Percentile: 3004.58
+Ten Percentile: 943.93
+Fifty Percentile: 225.03
+Generation:151
+Average Fitness: 146.52 Time eclipsed:493.2s
+One Percentile: 3003.02
+Ten Percentile: 1179.55
+Fifty Percentile: 276.04
+Generation:152
+Average Fitness: 55.29 Time eclipsed:500.7s
+One Percentile: 1757.71
+Ten Percentile: 342.14
+Fifty Percentile: 95.98
+Generation:153
+Average Fitness: 57.99 Time eclipsed:475.4s
+One Percentile: 2224.27
+Ten Percentile: 353.21
+Fifty Percentile: 99.62
+Generation:154
+Average Fitness: 47.98 Time eclipsed:485.0s
+One Percentile: 1788.02
+Ten Percentile: 257.15
+Fifty Percentile: 78.91
+Generation:155
+Average Fitness: 69.51 Time eclipsed:483.7s
+One Percentile: 2211.15
+Ten Percentile: 443.02
+Fifty Percentile: 119.75
+Generation:156
+Average Fitness: 63.51 Time eclipsed:493.1s
+One Percentile: 2292.71
+Ten Percentile: 379.57
+Fifty Percentile: 107.38
+Generation:157
+Average Fitness: 68.49 Time eclipsed:499.6s
+One Percentile: 3250.1
+Ten Percentile: 462.56
+Fifty Percentile: 119.66
+Generation:158
+Average Fitness: 66.55 Time eclipsed:482.4s
+One Percentile: 3054.38
+Ten Percentile: 439.97
+Fifty Percentile: 115.54
+Generation:159
+Average Fitness: 60.88 Time eclipsed:511.1s
+One Percentile: 2610.62
+Ten Percentile: 378.47
+Fifty Percentile: 103.77
+Generation:160
+Generation 160 Validation Average fitness: 269.1
+Generation 160 Validation Best: 3953
+Average Fitness: 73.5 Time eclipsed:561.6s
+One Percentile: 3232.19
+Ten Percentile: 499.95
+Fifty Percentile: 128.73
+Generation:161
+Average Fitness: 71.24 Time eclipsed:512.6s
+One Percentile: 3204.38
+Ten Percentile: 477.43
+Fifty Percentile: 123.59
+Generation:162
+Average Fitness: 69.06 Time eclipsed:526.8s
+One Percentile: 3106.04
+Ten Percentile: 464.31
+Fifty Percentile: 120.81
+Generation:163
+Average Fitness: 76.27 Time eclipsed:524.2s
+One Percentile: 3229.38
+Ten Percentile: 530.16
+Fifty Percentile: 134.03
+Generation:164
+Average Fitness: 75.96 Time eclipsed:519.0s
+One Percentile: 2836.67
+Ten Percentile: 527.53
+Fifty Percentile: 133.55
+Generation:165
+Average Fitness: 71.87 Time eclipsed:536.3s
+One Percentile: 3441.67
+Ten Percentile: 510.59
+Fifty Percentile: 128.04
+Generation:166
+Average Fitness: 51.38 Time eclipsed:529.2s
+One Percentile: 2545.62
+Ten Percentile: 341.89
+Fifty Percentile: 90.67
+Generation:167
+Average Fitness: 81.06 Time eclipsed:555.4s
+One Percentile: 3461.35
+Ten Percentile: 609.84
+Fifty Percentile: 147.79
+Generation:168
+Average Fitness: 82.29 Time eclipsed:530.9s
+One Percentile: 3078.85
+Ten Percentile: 575.23
+Fifty Percentile: 147.55
+Generation:169
+Average Fitness: 258.57 Time eclipsed:515.7s
+One Percentile: 8243.96
+Ten Percentile: 2249.09
+Fifty Percentile: 497.21
+Generation:170
+Generation 170 Validation Average fitness: 325.17
+Generation 170 Validation Best: 7843
+Average Fitness: 225.34 Time eclipsed:524.2s
+One Percentile: 6736.67
+Ten Percentile: 1932.16
+Fifty Percentile: 430.54
+Generation:171
+Average Fitness: 288.22 Time eclipsed:500.6s
+One Percentile: 8214.58
+Ten Percentile: 2566.44
+Fifty Percentile: 558.27
+Generation:172
+Average Fitness: 259.85 Time eclipsed:526.1s
+One Percentile: 9163.23
+Ten Percentile: 2276.1
+Fifty Percentile: 501.52
+Generation:173
+Average Fitness: 214.35 Time eclipsed:571.4s
+One Percentile: 8472.81
+Ten Percentile: 1902.68
+Fifty Percentile: 413.53
+Generation:174
+Average Fitness: 239.32 Time eclipsed:535.7s
+One Percentile: 9411.67
+Ten Percentile: 2129.81
+Fifty Percentile: 461.67
+Generation:175
+Average Fitness: 251.8 Time eclipsed:515.1s
+One Percentile: 10306.35
+Ten Percentile: 2213.96
+Fifty Percentile: 484.51
+Generation:176
+Average Fitness: 231.45 Time eclipsed:543.2s
+One Percentile: 9749.17
+Ten Percentile: 1990.98
+Fifty Percentile: 442.12
+Generation:177
+Average Fitness: 252.3 Time eclipsed:536.5s
+One Percentile: 8998.12
+Ten Percentile: 2209.74
+Fifty Percentile: 484.91
+Generation:178
+Average Fitness: 260.53 Time eclipsed:591.8s
+One Percentile: 9669.38
+Ten Percentile: 2270.4
+Fifty Percentile: 501.09
+Generation:179
+Average Fitness: 63.82 Time eclipsed:549.9s
+One Percentile: 2340.0
+Ten Percentile: 385.93
+Fifty Percentile: 110.27
+Generation:180
+Generation 180 Validation Average fitness: 177.95
+Generation 180 Validation Best: 2063
+Average Fitness: 73.39 Time eclipsed:595.4s
+One Percentile: 2681.15
+Ten Percentile: 482.08
+Fifty Percentile: 129.51
+Generation:181
+Average Fitness: 89.57 Time eclipsed:548.3s
+One Percentile: 3323.33
+Ten Percentile: 606.53
+Fifty Percentile: 160.27
+Generation:182
+Average Fitness: 81.07 Time eclipsed:541.4s
+One Percentile: 2325.94
+Ten Percentile: 515.67
+Fifty Percentile: 142.01
+Generation:183
+Average Fitness: 71.64 Time eclipsed:583.8s
+One Percentile: 1930.0
+Ten Percentile: 443.36
+Fifty Percentile: 124.07
+Generation:184
+Average Fitness: 102.74 Time eclipsed:529.1s
+One Percentile: 2184.27
+Ten Percentile: 725.79
+Fifty Percentile: 186.27
+Generation:185
+Average Fitness: 187.53 Time eclipsed:565.7s
+One Percentile: 6640.31
+Ten Percentile: 1517.85
+Fifty Percentile: 353.39
+Generation:186
+Average Fitness: 252.21 Time eclipsed:503.0s
+One Percentile: 8199.79
+Ten Percentile: 2173.2
+Fifty Percentile: 481.43
+Generation:187
+Average Fitness: 251.32 Time eclipsed:515.8s
+One Percentile: 8194.9
+Ten Percentile: 2129.59
+Fifty Percentile: 478.09
+Generation:188
+Average Fitness: 275.15 Time eclipsed:497.6s
+One Percentile: 8373.33
+Ten Percentile: 2399.42
+Fifty Percentile: 528.06
+Generation:189
+Average Fitness: 372.44 Time eclipsed:521.3s
+One Percentile: 8792.08
+Ten Percentile: 3333.97
+Fifty Percentile: 719.99
+Generation:190
+Generation 190 Validation Average fitness: 296.5
+Generation 190 Validation Best: 3936
+Average Fitness: 487.11 Time eclipsed:532.3s
+One Percentile: 8561.98
+Ten Percentile: 4483.07
+Fifty Percentile: 950.54
+Generation:191
+Average Fitness: 412.79 Time eclipsed:495.3s
+One Percentile: 8645.1
+Ten Percentile: 3750.88
+Fifty Percentile: 800.5
+Generation:192
+Average Fitness: 548.26 Time eclipsed:502.2s
+One Percentile: 8901.98
+Ten Percentile: 5057.78
+Fifty Percentile: 1071.28
+Generation:193
+Average Fitness: 509.39 Time eclipsed:492.6s
+One Percentile: 8529.17
+Ten Percentile: 4699.91
+Fifty Percentile: 996.07
+Generation:194
+Average Fitness: 566.34 Time eclipsed:494.4s
+One Percentile: 8688.96
+Ten Percentile: 5005.86
+Fifty Percentile: 1110.47
+Generation:195
+Average Fitness: 191.79 Time eclipsed:523.0s
+One Percentile: 4128.96
+Ten Percentile: 1639.25
+Fifty Percentile: 366.03
+Generation:196
+Average Fitness: 244.97 Time eclipsed:492.9s
+One Percentile: 5742.5
+Ten Percentile: 2122.94
+Fifty Percentile: 471.32
+Generation:197
+Average Fitness: 171.66 Time eclipsed:495.1s
+One Percentile: 5295.83
+Ten Percentile: 1430.29
+Fifty Percentile: 327.42
+Generation:198
+Average Fitness: 258.59 Time eclipsed:493.0s
+One Percentile: 6824.69
+Ten Percentile: 2276.5
+Fifty Percentile: 499.73
+Generation:199
+Average Fitness: 293.78 Time eclipsed:506.0s
+One Percentile: 6750.83
+Ten Percentile: 2491.06
+Fifty Percentile: 569.05
+Generation:200
+Generation 200 Validation Average fitness: 421.68
+Generation 200 Validation Best: 2645
+Average Fitness: 301.51 Time eclipsed:537.6s
+One Percentile: 7191.25
+Ten Percentile: 2600.76
+Fifty Percentile: 585.53
+Generation:201
+Average Fitness: 342.98 Time eclipsed:522.8s
+One Percentile: 6352.4
+Ten Percentile: 2749.04
+Fifty Percentile: 663.59
+Generation:202
+Average Fitness: 306.99 Time eclipsed:496.8s
+One Percentile: 5281.56
+Ten Percentile: 2439.35
+Fifty Percentile: 589.8
+Generation:203
+Average Fitness: 466.73 Time eclipsed:489.1s
+One Percentile: 9706.46
+Ten Percentile: 3579.95
+Fifty Percentile: 904.96
+Generation:204
+Average Fitness: 372.18 Time eclipsed:493.3s
+One Percentile: 10396.15
+Ten Percentile: 3263.17
+Fifty Percentile: 718.23
+Generation:205
+Average Fitness: 454.6 Time eclipsed:491.4s
+One Percentile: 12778.75
+Ten Percentile: 3902.74
+Fifty Percentile: 883.15
+Generation:206
+Average Fitness: 364.92 Time eclipsed:493.2s
+One Percentile: 11272.08
+Ten Percentile: 3346.2
+Fifty Percentile: 709.43
+Generation:207
+Average Fitness: 300.61 Time eclipsed:515.1s
+One Percentile: 9090.31
+Ten Percentile: 2681.56
+Fifty Percentile: 580.08
+Generation:208
+Average Fitness: 328.57 Time eclipsed:493.1s
+One Percentile: 11081.25
+Ten Percentile: 2976.68
+Fifty Percentile: 637.35
+Generation:209
+Average Fitness: 346.84 Time eclipsed:520.1s
+One Percentile: 13432.08
+Ten Percentile: 3188.8
+Fifty Percentile: 674.75
+Generation:210
+Generation 210 Validation Average fitness: 103.22
+Generation 210 Validation Best: 1434
+Average Fitness: 381.8 Time eclipsed:538.6s
+One Percentile: 13602.92
+Ten Percentile: 3508.81
+Fifty Percentile: 743.46
+Generation:211
+Average Fitness: 303.87 Time eclipsed:492.7s
+One Percentile: 11831.77
+Ten Percentile: 2778.24
+Fifty Percentile: 590.96
+Generation:212
+Average Fitness: 337.27 Time eclipsed:491.2s
+One Percentile: 14090.83
+Ten Percentile: 3122.32
+Fifty Percentile: 657.63
+Generation:213
+Average Fitness: 77.26 Time eclipsed:492.4s
+One Percentile: 3191.56
+Ten Percentile: 579.9
+Fifty Percentile: 140.48
+Generation:214
+Average Fitness: 81.13 Time eclipsed:494.1s
+One Percentile: 3412.71
+Ten Percentile: 630.59
+Fifty Percentile: 148.63
+Generation:215
+Average Fitness: 82.12 Time eclipsed:494.9s
+One Percentile: 3270.31
+Ten Percentile: 645.5
+Fifty Percentile: 151.66
+Generation:216
+Average Fitness: 59.91 Time eclipsed:493.4s
+One Percentile: 2182.19
+Ten Percentile: 433.24
+Fifty Percentile: 107.45
+Generation:217
+Average Fitness: 53.29 Time eclipsed:499.2s
+One Percentile: 2516.04
+Ten Percentile: 369.77
+Fifty Percentile: 94.51
+Generation:218
+Average Fitness: 72.48 Time eclipsed:520.5s
+One Percentile: 3412.29
+Ten Percentile: 536.19
+Fifty Percentile: 130.92
+Generation:219
+Average Fitness: 72.86 Time eclipsed:494.6s
+One Percentile: 2863.12
+Ten Percentile: 537.9
+Fifty Percentile: 131.14
+Generation:220
+Generation 220 Validation Average fitness: 310.33
+Generation 220 Validation Best: 7860
+Average Fitness: 77.11 Time eclipsed:539.9s
+One Percentile: 2636.04
+Ten Percentile: 575.73
+Fifty Percentile: 139.42
+Generation:221
+Average Fitness: 39.64 Time eclipsed:496.2s
+One Percentile: 1653.02
+Ten Percentile: 227.41
+Fifty Percentile: 66.74
+Generation:222
+Average Fitness: 61.07 Time eclipsed:511.3s
+One Percentile: 2541.46
+Ten Percentile: 425.93
+Fifty Percentile: 108.55
+Generation:223
+Average Fitness: 45.57 Time eclipsed:498.8s
+One Percentile: 2290.0
+Ten Percentile: 288.92
+Fifty Percentile: 79.18
+Generation:224
+Average Fitness: 44.05 Time eclipsed:528.3s
+One Percentile: 2444.58
+Ten Percentile: 295.23
+Fifty Percentile: 77.78
+Generation:225
+Average Fitness: 44.1 Time eclipsed:505.1s
+One Percentile: 2045.42
+Ten Percentile: 279.67
+Fifty Percentile: 77.34
+Generation:226
+Average Fitness: 50.83 Time eclipsed:498.8s
+One Percentile: 2020.52
+Ten Percentile: 322.07
+Fifty Percentile: 88.51
+Generation:227
+Average Fitness: 49.6 Time eclipsed:499.9s
+One Percentile: 2322.92
+Ten Percentile: 316.39
+Fifty Percentile: 86.39
+Generation:228
+Average Fitness: 120.73 Time eclipsed:508.3s
+One Percentile: 4684.79
+Ten Percentile: 1002.88
+Fifty Percentile: 226.88
+Generation:229
+Average Fitness: 138.41 Time eclipsed:506.4s
+One Percentile: 5463.85
+Ten Percentile: 1167.54
+Fifty Percentile: 261.49
+Generation:230
+Generation 230 Validation Average fitness: 175.63
+Generation 230 Validation Best: 3245
+Average Fitness: 145.95 Time eclipsed:588.0s
+One Percentile: 6348.75
+Ten Percentile: 1247.19
+Fifty Percentile: 277.14
+Generation:231
+Average Fitness: 150.67 Time eclipsed:494.9s
+One Percentile: 6163.02
+Ten Percentile: 1263.26
+Fifty Percentile: 285.81
+Generation:232
+Average Fitness: 103.45 Time eclipsed:486.0s
+One Percentile: 5030.21
+Ten Percentile: 841.84
+Fifty Percentile: 193.85
+Generation:233
+Average Fitness: 148.27 Time eclipsed:503.5s
+One Percentile: 5966.88
+Ten Percentile: 1277.75
+Fifty Percentile: 282.36
+Generation:234
+Average Fitness: 198.14 Time eclipsed:498.5s
+One Percentile: 6177.29
+Ten Percentile: 1719.47
+Fifty Percentile: 381.02
+Generation:235
+Average Fitness: 199.67 Time eclipsed:500.3s
+One Percentile: 6913.33
+Ten Percentile: 1728.45
+Fifty Percentile: 383.11
+Generation:236
+Average Fitness: 183.61 Time eclipsed:564.9s
+One Percentile: 4692.92
+Ten Percentile: 1596.94
+Fifty Percentile: 351.94
+Generation:237
+Average Fitness: 173.62 Time eclipsed:532.3s
+One Percentile: 4891.88
+Ten Percentile: 1509.49
+Fifty Percentile: 331.54
+Generation:238
+Average Fitness: 125.06 Time eclipsed:535.7s
+One Percentile: 5410.62
+Ten Percentile: 1059.46
+Fifty Percentile: 236.46
+Generation:239
+Average Fitness: 140.58 Time eclipsed:505.6s
+One Percentile: 4994.38
+Ten Percentile: 1184.73
+Fifty Percentile: 265.58
+Generation:240
+Generation 240 Validation Average fitness: 267.47
+Generation 240 Validation Best: 3226
+Average Fitness: 154.22 Time eclipsed:572.3s
+One Percentile: 5530.94
+Ten Percentile: 1275.02
+Fifty Percentile: 289.79
+Generation:241
+Average Fitness: 241.59 Time eclipsed:569.5s
+One Percentile: 5883.33
+Ten Percentile: 2053.58
+Fifty Percentile: 461.05
+Generation:242
+Average Fitness: 251.86 Time eclipsed:519.3s
+One Percentile: 5884.17
+Ten Percentile: 2110.3
+Fifty Percentile: 479.75
+Generation:243
+Average Fitness: 253.89 Time eclipsed:508.8s
+One Percentile: 5540.62
+Ten Percentile: 2105.62
+Fifty Percentile: 483.08
+Generation:244
+Average Fitness: 382.06 Time eclipsed:507.5s
+One Percentile: 8856.04
+Ten Percentile: 3238.61
+Fifty Percentile: 737.55
+Generation:245
+Average Fitness: 557.93 Time eclipsed:542.6s
+One Percentile: 9914.79
+Ten Percentile: 4397.73
+Fifty Percentile: 1092.25
+Generation:246
+Average Fitness: 481.13 Time eclipsed:501.6s
+One Percentile: 8302.92
+Ten Percentile: 3676.28
+Fifty Percentile: 938.58
+Generation:247
+Average Fitness: 512.67 Time eclipsed:557.9s
+One Percentile: 9538.23
+Ten Percentile: 3952.64
+Fifty Percentile: 1001.54
+Generation:248
+Average Fitness: 557.83 Time eclipsed:500.2s
+One Percentile: 9444.38
+Ten Percentile: 4283.27
+Fifty Percentile: 1090.95
+Generation:249
+Average Fitness: 497.74 Time eclipsed:522.2s
+One Percentile: 9353.75
+Ten Percentile: 3781.02
+Fifty Percentile: 970.11
+Generation:250
+Generation 250 Validation Average fitness: 316.78
+Generation 250 Validation Best: 7914
+Average Fitness: 406.31 Time eclipsed:546.3s
+One Percentile: 8648.23
+Ten Percentile: 3424.34
+Fifty Percentile: 791.78
+Generation:251
+Average Fitness: 296.91 Time eclipsed:491.7s
+One Percentile: 8375.83
+Ten Percentile: 2727.42
+Fifty Percentile: 579.61
+Generation:252
+Average Fitness: 310.82 Time eclipsed:483.5s
+One Percentile: 8156.25
+Ten Percentile: 2871.22
+Fifty Percentile: 607.6
+Generation:253
+Average Fitness: 305.95 Time eclipsed:493.9s
+One Percentile: 8153.54
+Ten Percentile: 2812.06
+Fifty Percentile: 597.75
+Generation:254
+Average Fitness: 55.17 Time eclipsed:489.3s
+One Percentile: 2883.96
+Ten Percentile: 379.47
+Fifty Percentile: 98.38
+Generation:255
+Average Fitness: 69.6 Time eclipsed:487.7s
+One Percentile: 2762.81
+Ten Percentile: 498.05
+Fifty Percentile: 124.86
+Generation:256
+Average Fitness: 127.15 Time eclipsed:494.9s
+One Percentile: 5132.4
+Ten Percentile: 1055.85
+Fifty Percentile: 238.85
+Generation:257
+Average Fitness: 119.34 Time eclipsed:477.3s
+One Percentile: 3943.75
+Ten Percentile: 966.72
+Fifty Percentile: 222.72
+Generation:258
+Average Fitness: 122.49 Time eclipsed:484.3s
+One Percentile: 4456.77
+Ten Percentile: 1005.48
+Fifty Percentile: 229.22
+Generation:259
+Average Fitness: 193.57 Time eclipsed:488.3s
+One Percentile: 5321.15
+Ten Percentile: 1657.29
+Fifty Percentile: 369.2
+Generation:260
+Generation 260 Validation Average fitness: 262.9
+Generation 260 Validation Best: 3235
+Average Fitness: 156.94 Time eclipsed:608.6s
+One Percentile: 4397.71
+Ten Percentile: 1361.11
+Fifty Percentile: 298.39
+Generation:261
+Average Fitness: 175.22 Time eclipsed:520.0s
+One Percentile: 5023.02
+Ten Percentile: 1543.72
+Fifty Percentile: 335.13
+Generation:262
+Average Fitness: 194.57 Time eclipsed:536.2s
+One Percentile: 5316.67
+Ten Percentile: 1677.0
+Fifty Percentile: 371.12
+Generation:263
